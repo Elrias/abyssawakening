@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enemies | Abyss Awakening Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/article.css">
+<link rel="stylesheet" href="../css/enemies.css">
+<link rel="stylesheet" href="../css/characters.css">
+</head>
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<body class="theme-light">
+
+<header class="wiki-header">
+
+    <div class="wiki-header-left">
+        <div class="wiki-logo">
+            <a href="../" class="brand">
+                <img src="../assets/logo.png" alt="Logo">
+                <span class="brand-title">AA Wiki</span>
+            </a>
+        </div>
+
+        <nav class="wiki-main-nav" id="mainNav">
+            <a href="../battle/">Battle</a>
+            <a href="../characters/">Characters</a>
+            <a href="../stats/">Stats</a>
+            <a href="../equipment/">Equipment</a>
+            <a href="./" class="active">Enemies</a>
+            <a href="../states/">States</a>
+            <a href="../account/">Account</a>
+        </nav>
+    </div>
+
+    <div class="wiki-header-right">
+        <button class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <button id="themeToggle" class="theme-toggle">☀</button>
+    </div>
+
+</header>
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<div class="wiki-page-layout">
+
+    <!-- Main Content -->
+    <main class="wiki-article">
+        <h1>Enemies</h1>
+        <p>Browse all known enemies of Abyss Awakening.</p>
+
+        <section class="wiki-section">
+            <h2>Basic Enemies</h2>
+            <div id="basicEnemyList" class="wiki-card-grid"></div>
+        </section>
+
+        <section class="wiki-section">
+            <h2>Bosses</h2>
+            <div id="bossEnemyList" class="wiki-card-grid"></div>
+        </section>
+    </main>
+</div>
+
+<script src="../js/common.js"></script>
+<script src="../js/enemies.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equipment | Abyss Awakening Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/equipment.css">
+<link rel="stylesheet" href="../../css/characters.css">
+</head>
+<link rel="icon" type="image/png" href="../../assets/icon.png">
+<body class="theme-light">
+
+<header class="wiki-header">
+
+    <div class="wiki-header-left">
+        <div class="wiki-logo">
+            <a href="../../" class="brand">
+                <img src="../../assets/logo.png" alt="Logo">
+                <span class="brand-title">AA Wiki</span>
+            </a>
+        </div>
+
+        <nav class="wiki-main-nav" id="mainNav">
+            <a href="../../battle/">Battle</a>
+            <a href="../../characters/">Characters</a>
+            <a href="../../stats/">Stats</a>
+            <a href="../"  class="active">Equipment</a>
+            <a href="../../enemies/">Enemies</a>
+            <a href="../../states/">States</a>
+            <a href="../../account/">Account</a>
+        </nav>
+    </div>
+
+    <div class="wiki-header-right">
+        <button class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <button id="themeToggle" class="theme-toggle">☀</button>
+    </div>
+
+</header>
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<main class="wiki-article">
+
+    <h1>Weapons</h1>
+    <p>
+        Weapons define a character’s offensive capabilities and scaling.
+    </p>
+
+    <!-- BASIC WEAPONS CARD -->
+    <div class="wiki-card weapon-toggle-card" id="basicWeaponsToggle">
+        <div class="toggle-header">
+            <h2>Basic Weapons</h2>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <p>Standard weapons available in the shop.</p>
+    </div>
+
+    <div id="basicWeaponsSection" class="weapon-section hidden">
+
+        <input type="text" id="weaponSearch" placeholder="Search a weapon...">
+        <select id="weaponTypeFilter">
+            <option value="all">All Types</option>
+        </select>
+        <div id="weaponsList" class="wiki-card-grid"></div>
+
+    </div>
+
+    <!-- UPGRADEABLE WEAPONS CARD -->
+    <div class="wiki-card weapon-toggle-card" id="upgradeableWeaponsToggle">
+        <div class="toggle-header">
+            <h2>Upgradeable Weapons</h2>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <p>Advanced weapons that can be enhanced.</p>
+    </div>
+
+    <div id="upgradeableWeaponsSection" class="weapon-section hidden">
+
+        <input type="text" id="upgradeSearch" placeholder="Search an upgradeable weapon...">
+
+        <select id="upgradeTypeFilter">
+            <option value="all">All Types</option>
+        </select>
+
+        <div id="upgradeableWeaponsList" class="wiki-card-grid"></div>
+
+    </div>
+
+    <h1>Gems</h1>
+    <p>Gems can be attached to upgraded weapons to further enhance its bonuses.</p>
+    <p>Upgradeable weapons gain one gem slot every 2 enhance levels.</p>
+
+    <div id="gemList" class="wiki-card-grid"></div>
+</main>
+
+<script src="../../js/common.js"></script>
+<script src="../../js/weapons.js"></script>
+
+</body>
+</html>

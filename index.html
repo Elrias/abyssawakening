@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="icon/icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="icon/icon.png" />
+
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="stylesheet" href="index.css" />
+
+    <title>Abyss Awakening</title>
+  </head>
+
+  <body>
+    <div id="backdrop" aria-hidden="true"></div>
+
+    <!-- Menu -->
+    <aside id="sidePanel" aria-label="Menu">
+      <div class="panelInner">
+        <!-- LOGIN -->
+        <div class="panelBlock">
+          <div class="panelHeader">
+            <h2 id="authTitle">Login</h2>
+          </div>
+
+      <form id="authForm" class="authForm" autocomplete="on" novalidate>
+        <!-- Zone qui contient les champs (on la cache quand logged) -->
+        <div id="authFields">
+          <div class="fieldRow">
+            <label for="authEmail">Email</label>
+            <input
+              id="authEmail"
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="fieldRow">
+            <label for="authPassword">Password</label>
+            <input
+              id="authPassword"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+              minlength="8"
+            />
+          </div>
+        </div>
+
+        <!-- Message quand logged -->
+        <div id="authLoggedMsg" class="authLoggedMsg" style="display:none;" aria-live="polite"></div>
+
+        <!-- Zone message (erreurs/info) -->
+        <div id="authStatus" class="authStatus" aria-live="polite"></div>
+
+        <div class="authActions">
+          <button type="submit" class="primaryBtn" id="authSubmitBtn">
+            <span class="btnText">Login</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+
+          <button
+            type="button"
+            class="primaryBtn secondaryBtn"
+            id="authLogoutBtn"
+            style="display:none;"
+          >
+            Logout
+          </button>
+        </div>
+
+        <div class="authLinks" id="authLinksRow">
+          <button type="button" class="linkBtn" id="authToggleModeBtn">Register</button>
+          <button type="button" class="linkBtn" id="authForgotBtn">Forgot password?</button>
+        </div>
+      </form>
+        </div>
+
+        <!-- GUIDES -->
+        <div class="panelBlock panelBlockGrow">
+          <h2>Guides</h2>
+          <div class="guidesList">
+            <a href="wiki/battle/" target="_blank" class="guideLink">Battle</a>
+            <a href="wiki/characters/" target="_blank" class="guideLink">Characters</a>
+            <a href="wiki/enemies/" target="_blank" class="guideLink">Enemies</a>
+            <a href="wiki/stats/" target="_blank" class="guideLink">Stats</a>
+            <a href="wiki/equipment/" target="_blank" class="guideLink">Equipment</a>
+            <a href="wiki/states/" target="_blank" class="guideLink">States</a>
+            <a href="wiki/account/" target="_blank" class="guideLink">Account</a>
+          </div>
+        </div>
+
+        <!-- VERSION -->
+        <div class="panelBlock panelFooter">
+          <h2>Abyss Awakening</h2>
+          <p class="muted">Demo v0.3.3</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Bouton Menu -->
+    <button
+      id="menuToggle"
+      class="ui-btn"
+      type="button"
+      aria-expanded="false"
+      aria-controls="sidePanel"
+    >
+      <span id="menuIcon">☰</span>
+      <span id="menuLabel">Menu</span>
+    </button>
+
+    <!-- Bouton Fullscreen -->
+    <button id="fullscreenBtn" type="button" aria-label="Plein écran">
+      <img src="./img/system/fullscreen_icon.png" alt="Fullscreen" />
+    </button>
+
+    <!-- Discord -->
+    <a
+      id="discordBtn"
+      class="floatingDiscord"
+      href="https://discord.gg/P97QCCqqMh"
+      target="_blank"
+      rel="noopener"
+      aria-label="Rejoindre le Discord"
+    >
+      <span class="discordDot" aria-hidden="true"></span>
+      <span class="discordLabel">Discord</span>
+    </a>
+
+    <!-- Le jeu -->
+    <script src="js/main.js"></script>
+
+    <!-- JS du site -->
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battle | Abyss Awakening Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/article.css">
+</head>
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<body class="theme-light">
+
+<header class="wiki-header">
+
+    <div class="wiki-header-left">
+        <div class="wiki-logo">
+            <a href="../" class="brand">
+                <img src="../assets/logo.png" alt="Logo">
+                <span class="brand-title">AA Wiki</span>
+            </a>
+        </div>
+
+        <nav class="wiki-main-nav" id="mainNav">
+            <a href="./" class="active">Battle</a>
+            <a href="../characters/">Characters</a>
+            <a href="../stats/">Stats</a>
+            <a href="../equipment/">Equipment</a>
+            <a href="../enemies/">Enemies</a>
+            <a href="../states/">States</a>
+            <a href="../account/">Account</a>
+        </nav>
+    </div>
+
+    <div class="wiki-header-right">
+        <button class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <button id="themeToggle" class="theme-toggle">☀</button>
+    </div>
+
+</header>
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<div class="wiki-page-layout">
+
+    <!-- Sidebar Navigation -->
+    <aside class="wiki-sidebar">
+
+        <h3>Battle</h3>
+
+        <a href="#overview">Overview</a>
+        <a href="#ui" class="sub">UI</a>
+        <a href="#resources" class="sub">Resources</a>
+        <a href="#states" class="sub">States</a>
+
+        <a href="#battleflow">Battle Flow</a>
+        <a href="#skills" class="sub">Skills</a>
+        <a href="#ex" class="sub">EX</a>
+        <a href="#items" class="sub">Items</a>
+        <a href="#guard" class="sub">Guard</a>
+        <a href="#enemies" class="sub">Enemies</a>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="wiki-article">
+
+        <!-- OVERVIEW -->
+        <section id="overview">
+            <h1>Battle Overview</h1>
+            <p>Abyss Awakening use a standard turn battle system.</p>
+            <p>Every Character and Ennemy will play their respective turn one by one.</p>
+        </section>
+        <section id="ui">
+            <h2>UI</h2>
+            <p>The order in which Actors will play their turn is shown on the right end of the battle UI.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/turn_order.png" alt="Turn order display">
+                <figcaption>Turn order display.</figcaption>
+            </figure>
+            <p>The order in which Actors will play their turn is shown on the right end of the battle UI.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/enemy_hud.png" alt="Enemy HUD">
+                <figcaption>Enemy HUD.</figcaption>
+            </figure>
+            <p>The details about the allied characters is shown on the bottom part of the battle UI.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/ally_hud.png" alt="Ally HUD">
+                <figcaption>Ally HUD.</figcaption>
+            </figure>
+
+        </section>
+
+        <section id="resources">
+            <h2>Resources</h2>
+            <p>All allies will have a TP gauge right under their HP gauge.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/tp_gauge.png" alt="TP gauge">
+                <figcaption>TP Gauge.</figcaption>
+            </figure>
+            <p>This TP gauge is mostly used to execute powerful EX skills, and is increased by 10 upon attacking.</p>
+            <p>Under the TP gauge, blue spheres will show you wether each of the character's skills is ready for use</p>
+            <figure class="wiki-figure">
+                <img src="../assets/skill_ready.png" alt="Skill ready">
+                <figcaption>Skills display.</figcaption>
+            </figure>            
+            <p>Enemies will show green spheres under their HP gauge.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/enemy_sp.png" alt="Enemy SP">
+                <figcaption>Enemy SP.</figcaption>
+            </figure>            
+            <p>These spheres are called SP. When all SP are filled, the enemy will use an EX skill on the next turn.</p>
+        </section>
+
+        <section id="states">
+            <h2>States</h2>
+            <p>On the right side of the character's UI, states affecting the character will be shown.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/ally_states.png" alt="Ally states display">
+                <figcaption>Ally states display.</figcaption>
+            </figure>            
+             <p>States affecting the enemy can be found over their HP gauge.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/enemy_states.png" alt="Enemy states display">
+                <figcaption>Enemy states display.</figcaption>
+            </figure>            
+            <p>When hovering an enemy, character or their portrait, you will show details about each state affecting them.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/state_tooltip.png" alt="State tooltip">
+                <figcaption>State tooltip.</figcaption>
+            </figure>                    
+        </section>
+
+        <!-- BATTLE FLOW -->
+        <section id="battleflow">
+            <h1>Battle Flow</h1>
+            <p>A turn will end after all allies and all enemies played their turn.</p>
+            <p>However, more than one action can be used in a character's turn.</p>
+            <p>Attacking, Guarding or using your EX skill will end your turn.</p>
+            <p>Activating skills or using items will not end your turn.</p>
+            <p>You can chose to flee battle by pressing the return button durint your turn in battle.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/flee.png" alt="Flee">
+                <figcaption>Flee option.</figcaption>
+            </figure>
+            <p>Some battles cannot be escaped.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <p>Skills are activated by selecting the skill option during battle.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/skill_option.png" alt="Skill option">
+                <figcaption>Skill option.</figcaption>
+            </figure>
+            <p>Skills will have various effects and some will have special costs.</p>
+            <p>As mentioned previously, skills will not consume your turn.</p>
+            <p>However, most skills will have cooldown before they can be used again.</p>
+        </section>
+
+        <section id="ex">
+            <h2>EX</h2>
+            <p>EX skills are powerful ultimate attacks.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/ex_option.png" alt="EX option">
+                <figcaption>EX option.</figcaption>
+            </figure>
+            <p>Most EX skills will require your TP gauge to be full in order to be used.</p>
+            <p>In those cases, the entire TP gauge will be consumed when the EX skill is used.</p>
+            <p>Unlike regular skills, EX skills do not have cooldown.</p>
+        </section>
+
+        <section id="items">
+            <h2>Items</h2>
+            <p>Items can be used at any time during a character's turn.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/item_option.png" alt="Item option">
+                <figcaption>Item option.</figcaption>
+            </figure>
+            <p>Like skills, they will not end your turn when you use them.</p>
+            <p>Each item type have a maximum ammount you can carry.</p>
+            <p>Items used will be lost.</p>
+        </section>
+
+        <section id="guard">
+            <h2>Guard</h2>
+            <p>Guarding will reduce all damage taken by 50% until the end of the turn.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/guard_option.png" alt="Guard option">
+                <figcaption>Guard option.</figcaption>
+            </figure>
+            <p>It will however end your turn without attacking.</p>
+            <p>Unlike attacks, guard only generates 5 TP.</p>
+            <p>Some attacks are unblockable, guard will not reduce damage taken from these attacks.</p>
+            <p>Some attacks have a Guard Crush effect. If blocked, the damage will not be reduced and Guard Crush effect will be applied to the target. Guard Crush will prevent the user from using guard for a few turns.</p>
+        </section>
+
+        <section id="enemies">
+            <h2>Enemies</h2>
+            <p>Enemies will attack every turn, charging one SP each time.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/enemy_sp.png" alt="Enemy SP">
+                <figcaption>Enemy SP.</figcaption>
+            </figure>
+            <p>When all SP are filled, they will use their specific EX move.</p>
+            <p>These are powerful attacks, so be prepared !</p>
+            <p>Some enemies will also prepare skills unpon reaching a certain HP percentage.</p>
+            <figure class="wiki-figure">
+                <img src="../assets/enemy_skills.png" alt="Enemy skill">
+                <figcaption>Enemy skill ready.</figcaption>
+            </figure>
+            <p>When enemies have prepared a skill, they will gain the status effect : "Special Attack".</p>
+            <p>When under the status "Special Attack", their next action will be a specific special skill.</p>
+            <p>Enemies can have several EX and Special attacks.</p>
+            <p>Enemy special skills (based on HP%) will take priority over their EX (based on SP) if both conditions are met.</p>
+        </section>
+    </main>
+
+</div>
+
+<script src="../js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* HERO */
+
+.wiki-hero {
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wiki-hero-img {
+    max-height: 220px;
+    width: auto;
+    max-width: 90%;
+    object-fit: contain;
+}
+
+/* CONTENT */
+
+.wiki-content {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.wiki-intro {
+    opacity: 0.7;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* CARDS */
+
+.wiki-card-grid {
+    display: grid;
+    gap: 30px;
+    margin-top: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.wiki-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px 25px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transition:
+        transform 0.35s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.35s cubic-bezier(.2,.8,.2,1),
+        border-color 0.35s ease;
+    position: relative;
+    overflow: hidden;
+
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.wiki-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+    border-color: rgba(140,120,255,0.4);
+}
+
+body.theme-dark .wiki-card {
+    background: #1b1f2a;
+    border: 1px solid #2a2f3a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+body.theme-dark .wiki-card:hover {
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

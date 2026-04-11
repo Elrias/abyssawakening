@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stats | Abyss Awakening Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/article.css">
+</head>
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<body class="theme-light">
+
+<header class="wiki-header">
+
+    <div class="wiki-header-left">
+        <div class="wiki-logo">
+            <a href="../" class="brand">
+                <img src="../assets/logo.png" alt="Logo">
+                <span class="brand-title">AA Wiki</span>
+            </a>
+        </div>
+
+        <nav class="wiki-main-nav" id="mainNav">
+            <a href="../battle/">Battle</a>
+            <a href="../characters/">Characters</a>
+            <a href="./" class="active">Stats</a>
+            <a href="../equipment/">Equipment</a>
+            <a href="../enemies/">Enemies</a>
+            <a href="../states/">States</a>
+            <a href="../account/">Account</a>
+        </nav>
+    </div>
+
+    <div class="wiki-header-right">
+        <button class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <button id="themeToggle" class="theme-toggle">☀</button>
+    </div>
+
+</header>
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<div class="wiki-page-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="wiki-sidebar">
+
+        <h3>Battle</h3>
+
+        <a href="#base-params">Base parameters</a>
+        <a href="#HP" class="sub">HP</a>
+        <a href="#ATK" class="sub">ATK</a>
+        <a href="#MAT" class="sub">MAT</a>
+        <a href="#DEF" class="sub">DEF</a>
+        <a href="#MDF" class="sub">MDF</a>
+        <a href="#LUK" class="sub">LUK</a>
+        <a href="#AGI" class="sub">AGI</a>
+
+        <a href="#extra-params">Extra parameters</a>
+        <a href="#HIT" class="sub">HIT</a>
+        <a href="#EVA" class="sub">EVA</a>
+        <a href="#CRI" class="sub">CRI</a>
+        <a href="#HPR" class="sub">HPR</a>
+        <a href="#TPR" class="sub">TPR</a>
+
+        <a href="#special-params">Special parameters</a>
+        <a href="#HOS" class="sub">HOS</a>
+        <a href="#HLR" class="sub">HLR</a>
+        <a href="#TCR" class="sub">TCR</a>
+
+        <a href="#damage-multipliers">Damage multipliers</a>
+        <a href="#dealt" class="sub">Damage dealt</a>
+        <a href="#taken" class="sub">Damage taken</a>
+        <a href="#cap" class="sub">Damage cap</a>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="wiki-article">
+
+        <section id="base-params">
+            <h1>Base parameters</h1>
+            <p>There are 7 base parameters for all characters in Abyss Awakening.</p>
+            <p>These parameters are :</p>
+            <ul>
+                <li>HP  - Health</li>
+                <li>ATK - Attack</li>
+                <li>MAT - Magic attack</li>
+                <li>DEF - Defense</li>
+                <li>MDF - Magic Defense</li>
+                <li>LUK - Luck</li>
+                <li>AGI - Agility</li>
+            </ul>
+        </section>
+        <section id="HP">
+            <h2>HP</h2>
+            <p>HP represents the hit points of the character.</p>
+            <p>The character will be knocked out when their HP reaches 0.</p>
+            <p>HP is capped at 99999.</p>
+        </section>
+        <section id="ATK">
+            <h2>Attack</h2>
+            <p>Attack is the value that affects physical damage dealt.</p>
+            <p>Each physical attack, skill or EX deal a different ammount of damage based on attack.</p>
+            <p>Basic attacks will always deal 100% of attack if using a physical damage weapon.</p>
+            <p>Attack is capped at 9999.</p>
+        </section>
+        <section id="MAT">    
+            <h2>Magic Attack</h2>
+            <p>Magic Attack is the value that affects magic damage dealt.</p>
+            <p>Each magic attack, skill or EX deal a different ammount of damage based on Magic attack.</p>
+            <p>Basic attacks will always deal 100% of Magic attack if using a magic damage weapon.</p>
+            <p>Magic Attack is capped at 9999.</p>
+        </section>
+        <section id="DEF">      
+            <h2>Defense</h2>
+            <p>Defense is the value that affects physical damage taken.</p>
+            <p>Physical damage received will be divided by the defense value.</p>
+            <p>The base value for defense is 10. At this point it does not reduce any physical damage.</p>
+            <p>Each point in defense over 10 will grant more physical damage reduction.</p>
+            <p>Defense can be lowered under 10, in this case, physical damage taken will be increased.</p>
+            <p>Defense is capped at 100 (90% damage reduction).</p>
+        </section>    
+        <section id="MDF">      
+            <h2>Magic Defense</h2>
+            <p>Magic Defense is the value that affects magic damage taken.</p>
+            <p>Magic damage received will be divided by the Magic Defense value.</p>
+            <p>The base value for Magic Defense is 10. At this point it does not reduce any magic damage.</p>
+            <p>Each point in Magic Defense over 10 will grant more magic damage reduction.</p>
+            <p>Magic Defense can be lowered under 10, in this case, magic damage taken will be increased.</p>
+            <p>Magic Defense is capped at 100 (90% damage reduction).</p>
+        </section>
+        <section id="LUK">      
+            <h2>Luck</h2>
+            <p>Luck affects critical strike chance and critical damage.</p>
+            <p>For every 25 points in luck, critical strike chance will be increased by 1%.</p>
+            <p>For every 20 points in luck, critical strike damage will increase by 1%</p>
+            <p>For every 5 points in luck, critical strikes will deal 1 extra flat damage.</p>
+            <p>Luck is capped at 2000.</p>
+        </section>
+        <section id="AGI">  
+            <h2>Agility</h2>
+            <p>Agility will affect turn order.</p>
+            <p>Allies will play their turn in order from highest agility to lowest agility in the party.</p>
+            <p>Agility is capped at 9999.</p>
+        </section>
+        <section id="extra-params">
+            <h1>Extra parameters</h1>
+            <p>Additionally to base parameters, there are extra parameters.</p>
+            <p>These parameters are :</p>
+            <ul>
+                <li>HIT - Hit rate</li>
+                <li>EVA - Evasion rate</li>
+                <li>CRI - Critical rate</li>
+                <li>HPR - HP Regen</li>
+                <li>TPR - TP Regen</li>
+            </ul>
+        </section>
+                <section id="HIT">
+            <h2>HIT</h2>
+            <p>Hit rate represents the chance for any attacks to land on the target.</p>
+            <p>Base hit rate is 100% for all actors, but can be reduced via debuff states.</p>
+        </section>
+        <section id="EVA">
+            <h2>EVA</h2>
+            <p>Evasion rate represents the chance for an actor to dodge attacks.</p>
+            <p>Dodging an attack will entirely negate the damage.</p>
+        </section>
+        <section id="CRI">    
+            <h2>CRI</h2>
+            <p>Critical rate represents the chance for an actor to land a critical hit.</p>
+            <p>Critical is rolled for every hit of multi-hit attacks.</p>
+            <p>A critical strike will increase damage by 50%.</p>
+            <p>Luck will increase the critical chance, critical damage multiplier and add a flat damage bonus to critical strikes.</p>
+        </section>
+        <section id="HPR">      
+            <h2>HPR</h2>
+            <p>HP regen represents the ammount of %Max HP an actor heals at the end of the turn.</p>
+            <p>HP regen is increased primarily via equipment and skills.</p>
+        </section>    
+        <section id="TPR">      
+            <h2>TPR</h2>
+            <p>TP regen represents the ammount of TP an actor recovers at the end of the turn.</p>
+            <p>TP regen is increased primarily via equipment and skills.</p>
+        </section>
+        <section id="special-params">
+            <h1>Special parameters</h1>
+            <p>There also exist special parameters.</p>
+            <p>These parameters are :</p>
+            <ul>
+                <li>HOS - Hostility</li>
+                <li>HLR - Healing received</li>
+                <li>TCR - TP Charge rate</li>
+            </ul>
+        </section>
+        <section id="HOS">    
+            <h2>HOS</h2>
+            <p>Hostility reprensents the chance for an actor to be targeted by an enemy.</p>
+            <p>Hostility starts at 100% for all actors, but it can be increased via equipment and states.</p>
+        </section>
+        <section id="HLR">      
+            <h2>HLR</h2>
+            <p>Healing received increase healing from any source received by the target.</p>
+            <p>Some effects will only increase one specific healing source.</p>
+        </section>    
+        <section id="TCR">      
+            <h2>TCR</h2>
+            <p>TP Charge rate represents the ammount of TP recovered via attacks, guard and other effects.</p>
+            <p>It increases TP gains multiplicatively.</p>
+        </section>
+        <section id="damage-multipliers">
+            <h1>Damage multipliers</h1>
+            <p>Damage multipliers will increase or decrease damage dealt and taken there exist several types.</p>
+        </section>
+        <section id="dealt">      
+            <h2>Damage dealt</h2>
+            <p>Damage dealt multipliers will increase or decrease the final damage dealt to the target.</p>
+            <p>These multipliers can affect all damage, or specific sources.</p>
+            <p>All sources of damage dealt multipliers will stack additively.</p>
+            <p>These multipliers will affect all damage, including negative damage (healing)</p>
+        </section>    
+        <section id="taken">      
+            <h2>Damage taken</h2>
+            <p>Damage taken multipliers will increase or decrease the final damage taken by the target.</p>
+            <p>These multipliers can affect all damage, or specific sources.</p>
+            <p>All sources of damage taken multipliers will stack additively.</p>
+            <p>These multipliers will affect all damage, including negative damage (healing)</p>
+        </section>
+        <section id="cap">      
+            <h2>Damage cap</h2>
+            <p>Damage is capped at 999,999.</p>
+            <p>Soft cap starts at over 750,000 damage.</p>
+        </section>
+    </main>
+</div>
+
+<script src="../js/common.js"></script>
+</body>
+</html>

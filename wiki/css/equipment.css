@@ -1,0 +1,232 @@
+#runeSearch {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    margin: 30px 0 40px 0;
+    transition: all 0.25s ease;
+}
+
+#runeSearch:focus {
+    outline: none;
+    border-color: #7a6cff;
+    box-shadow: 0 0 0 3px rgba(122,108,255,0.25);
+}
+
+.weapon-toggle-card {
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.weapon-section {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.weapon-section {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.weapon-section.hidden {
+    display: none;
+}
+
+/* Param block inside card */
+.weapon-params {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.85;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 20px;
+}
+
+#waponsList,
+#wikiWeaponsList,
+#weaponsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+    gap: 30px;
+    justify-content: start;
+}
+
+#weaponSearch {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    margin: 30px 0 40px 0;
+    transition: all 0.25s ease;
+}
+
+#upgradeSearch {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    margin: 30px 0 40px 0;
+    transition: all 0.25s ease;
+}
+
+#weaponSearch::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+#upgradeSearch::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+#runeSearch::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+#weaponSearch:focus {
+    outline: none;
+    border-color: #7a6cff;
+    box-shadow: 0 0 0 3px rgba(122,108,255,0.25);
+}
+
+#upgradeSearch:focus {
+    outline: none;
+    border-color: #7a6cff;
+    box-shadow: 0 0 0 3px rgba(122,108,255,0.25);
+}
+
+body.theme-light #weaponSearch {
+    background: white;
+    color: #111;
+    border: 1px solid #d6d9e4;
+}
+
+body.theme-light #upgradeSearch {
+    background: white;
+    color: #111;
+    border: 1px solid #d6d9e4;
+}
+
+body.theme-light #runeSearch {
+    background: white;
+    color: #111;
+    border: 1px solid #d6d9e4;
+}
+
+.toggle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.weapon-toggle-card.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.weapon-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.weapon-price {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #7a6cff;
+    font-size: 14px;
+}
+
+body.theme-light .weapon-price {
+    color: #5b4fff;
+}
+
+#upgradeTypeFilter {
+    margin-left: 20px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+#weaponTypeFilter {
+    margin-left: 20px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+body.theme-light #weaponTypeFilter {
+    background: white;
+    color: #111;
+    border: 1px solid #d6d9e4;
+}
+
+body.theme-light #upgradeTypeFilter {
+    background: white;
+    color: #111;
+    border: 1px solid #d6d9e4;
+}
+
+.upgrade-stats-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.upgrade-stats-table th,
+.upgrade-stats-table td {
+    padding: 8px 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.upgrade-stats-table th {
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.upgrade-table.hidden {
+    display: none;
+}
+.upgradeable-card {
+    height: fit-content;
+}
+
+.wiki-section {
+    margin-top: 60px;
+}
+
+.wiki-section h2 {
+    margin-bottom: 16px;
+}
+
+.wiki-section ul {
+    margin-top: 16px;
+    padding-left: 20px;
+    line-height: 1.7;
+}
+
+/* Skills grid */
+#glyphSkillList {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}

@@ -1,0 +1,188 @@
+.enemy-card {
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.enemy-card:hover {
+    transform: translateY(-6px);
+}
+
+.enemy-portrait {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin: 0 auto 16px auto;
+}
+
+.enemy-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.enemy-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.enemy-visual {
+    text-align: center;
+}
+
+.enemy-visual img {
+    height: auto;
+    object-fit: contain;
+    max-width: min(400px, 90%);
+}
+
+.enemy-parameters {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.param-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding: 6px 0;
+}
+
+.sp-spheres {
+    display: flex;
+    gap: 6px;
+}
+
+.enemy-skill-card {
+    margin-bottom: 16px;
+    padding: 16px;
+}
+
+.param-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.sp-spheres {
+    display: flex;
+    gap: 6px;
+}
+
+.sp-orb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+
+    background: radial-gradient(circle at 30% 30%, #d4ffcc, #2ecc71 60%, #1e8449);
+    box-shadow: 0 0 6px #2ecc71, 0 0 10px rgba(46, 204, 113, 0.5);
+
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.drop-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.drop-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.drop-right {
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.icon {
+    background-repeat: no-repeat;
+}
+
+/* Toggle header */
+.drop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.drop-header.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Collapsible */
+.drop-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 40px;
+}
+
+.drop-container.hidden {
+    display: none;
+}
+
+/* Drop line cleanup */
+.drop-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.enemy-skill-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    margin: 10px 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.skill-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.skill-name {
+    font-weight: 600;
+}
+
+.skill-desc {
+    opacity: 0.75;
+    font-size: 0.9em;
+}
+
+.skill-right {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.skill-type {
+    font-weight: 600;
+}
+
+.skill-condition {
+    font-size: 0.85em;
+    opacity: 0.7;
+    min-height: 18px;
+}

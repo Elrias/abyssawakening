@@ -1,0 +1,119 @@
+.states-intro {
+    margin-bottom: 40px;
+}
+
+.states-controls {
+    margin-bottom: 30px;
+}
+
+#stateSearch {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.06);
+    color: inherit;
+}
+
+.states-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.state-card {
+    padding: 24px;
+    border-radius: 18px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.06),
+        rgba(255,255,255,0.02)
+    );
+    backdrop-filter: blur(6px);
+    transition: 0.2s ease;
+}
+
+.state-card:hover {
+    transform: translateY(-4px);
+}
+
+.state-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.state-icon {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+}
+
+.state-category {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.state-description {
+    font-size: 14px;
+}
+
+.states-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.wiki-article {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+body.theme-light .wiki-article,
+body.theme-dark .wiki-article {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+body.theme-light .state-card {
+    background: white;
+    border: 1px solid #e8e8f0;
+    box-shadow: 0 8px 25px rgba(30,40,90,0.06);
+    transition: 0.25s ease;
+}
+
+body.theme-light .state-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(30,40,90,0.12);
+}
+
+body.theme-light .state-header h3 {
+    font-weight: 600;
+    color: #1d1f2a;
+}
+
+body.theme-light .state-category {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    background: #eef2ff;
+    color: #4a5cff;
+    font-weight: 500;
+}
+
+body.theme-light #stateSearch {
+    background: white;
+    border: 1px solid #dfe3f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    border-radius: 12px;
+    transition: 0.2s ease;
+}
+
+body.theme-light #stateSearch:focus {
+    outline: none;
+    border-color: #7a8cff;
+    box-shadow: 0 0 0 3px rgba(122,140,255,0.2);
+}

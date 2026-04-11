@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enemies | Abyss Awakening Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="stylesheet" href="../../css/enemies.css">
+<link rel="stylesheet" href="../../css/characters.css">
+</head>
+<link rel="icon" type="image/png" href="../../assets/icon.png">
+<body class="theme-light">
+
+<header class="wiki-header">
+
+    <div class="wiki-header-left">
+        <div class="wiki-logo">
+            <a href="../../" class="brand">
+                <img src="../../assets/logo.png" alt="Logo">
+                <span class="brand-title">AA Wiki</span>
+            </a>
+        </div>
+
+        <nav class="wiki-main-nav" id="mainNav">
+            <a href="../../battle/">Battle</a>
+            <a href="../../characters/">Characters</a>
+            <a href="../../stats/">Stats</a>
+            <a href="../../equipment/">Equipment</a>
+            <a href="../" class="active">Enemies</a>
+            <a href="../../states/">States</a>
+            <a href="../../account/">Account</a>
+        </nav>
+    </div>
+
+    <div class="wiki-header-right">
+        <button class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <button id="themeToggle" class="theme-toggle">☀</button>
+    </div>
+
+</header>
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+    <!-- Main Content -->
+<main class="wiki-article">
+    <div id="enemyPage">
+
+        <div class="enemy-top">
+            <div class="enemy-visual">
+                <h1 id="enemyName"></h1>
+                <img id="enemyImage">
+            </div>
+
+            <div class="enemy-parameters">
+                <h2>Parameters</h2>
+                <div id="enemyParams"></div>
+
+                <div class="drop-header" id="dropToggle">
+                    <h2>Drop Table</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+
+                <div id="enemyDrops" class="drop-container hidden"></div>
+            </div>
+        </div>
+
+        <div class="enemy-skills-section">
+            <h2>Skills</h2>
+            <div id="enemySkills"></div>
+        </div>
+
+    </div>
+
+</main>
+
+<script src="../../js/common.js"></script>
+<script src="../../js/enemy.js"></script>
+</body>
+</html>
