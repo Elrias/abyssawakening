@@ -259,8 +259,26 @@ toggleModeBtn?.addEventListener("click", () => {
   setMode(mode === "login" ? "register" : "login");
 });
 
-forgotBtn?.addEventListener("click", () => {
-  setAuthStatus("V1: Forgot password is not implemented yet.", "");
+forgotBtn?.addEventListener("click", async () => {
+  const email = prompt("Enter your account email:");
+
+  if (!email) return;
+
+  setLoading(true);
+  setAuthStatus("Sending reset email...", "");
+
+  try {
+    await api("/auth/forgot-password", {
+      method: "POST",
+      body: { email }
+    });
+
+    setAuthStatus("If this email exists, a reset link has been sent.", "success");
+  } catch (err) {
+    setAuthStatus("Error sending reset email.", "error");
+  } finally {
+    setLoading(false);
+  }
 });
 
 // Handle submit (click OR Enter)
