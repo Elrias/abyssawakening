@@ -1,5 +1,5 @@
 const API_BASE = "https://abyssawakening-backend.onrender.com";
-const BASE_PATH = "/elrias-lab/abyssawakening/";
+const BASE_PATH = "/";
 const PLAYERS_PER_PAGE = 20;
 let currentPage = 1;
 let allPlayers = [];
