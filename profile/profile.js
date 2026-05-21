@@ -1,5 +1,5 @@
 const API_BASE = "https://abyssawakening-backend.onrender.com";
-const BASE_PATH = "/elrias-lab/abyssawakening/";
+const BASE_PATH = "/";
 let avatarInput = null;
 let avatarImg = null;
 let avatarWrapper = null;
