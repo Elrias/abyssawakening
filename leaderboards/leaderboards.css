@@ -1,0 +1,131 @@
+body {
+  background: #0f1117; 
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+}
+
+#header {
+  background: #1b1f2a;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  background: #1b1f2a;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+
+  transition: 0.2s;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.name {
+    flex: 1;
+}
+
+.leaderboard-row.rank-1 {
+  border: 2px solid gold;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.leaderboard-row.rank-2 {
+  border: 2px solid silver;
+  box-shadow: 0 0 12px rgba(192, 192, 192, 0.6);
+}
+
+.leaderboard-row.rank-3 {
+  border: 2px solid #cd7f32;
+  box-shadow: 0 0 12px rgba(205, 127, 50, 0.6);
+}
+
+.leaderboard-row:hover {
+  transform: scale(1.02);
+  background: #232838;
+}
+
+.rank {
+  width: 40px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.score {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+#leaderboards-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#content {
+  padding: 0 20px 40px;
+}
+
+.avatar.rank-1 {
+  border: 3px solid gold;
+  box-shadow: 0 0 10px gold;
+}
+
+.avatar.rank-2 {
+  border: 3px solid silver;
+  box-shadow: 0 0 8px silver;
+}
+
+.avatar.rank-3 {
+  border: 3px solid #cd7f32; /* bronze */
+  box-shadow: 0 0 8px #cd7f32;
+}
+
+/* ========================= */
+/* PAGINATION */
+/* ========================= */
+
+#pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#pagination span {
+  padding: 6px 10px;
+  background: #1b1f2a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#pagination span:hover {
+  background: #2a2f3a;
+}
+
+.page-number.active {
+  background: #ffd700;
+  color: #ffd700;
+  font-weight: bold;
+}

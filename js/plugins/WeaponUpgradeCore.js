@@ -33,7 +33,7 @@
  * STOCKAGE
  * ────────────────────────────────────────────────────────────────────────────
  * Sur l'objet arme (l'instance) : weapon._wupg = {
- *   lvl, fails,
+ *   lvl,
  *   slots: [ { itemId, bonuses:{pid:value,...} } | null, ... ]
  * }
  * - Migration auto depuis anciens formats :
@@ -50,8 +50,6 @@
  *  isUpgradeable(weapon)         -> boolean (notetag <Upgradeable>)
  *  inventoryUpgradeableWeapons() -> [weaponObj,...] (inventaire)
  *  currentLevelOf(weapon)        -> number
- *  nextChanceOf(weapon)          -> %
- *  nextPityOf(weapon)            -> number
  *  nextGainOf(weapon)            -> {pid:diff,...}
  *  nextGainTextOf(weapon)        -> string
  *  nextMatsOf(weapon)            -> [{itemId,qty},...]
@@ -81,17 +79,6 @@
  * @option round @option floor @option ceil
  * @default round
  *
- * @param UpgradeRates
- * @type string
- * @default 100,95,90,85,80,70,60,50,40,30
- *
- * @param UpgradePity
- * @type string
- * @default 0,0,0,0,0,0,0,0,0,0
- *
- * @param ConsumeMaterialsOnFail
- * @type boolean @default true
- *
  * @param ScaleNegativeParams
  * @type boolean @default false
  *
@@ -108,6 +95,12 @@
  * @param AllowDuplicatesDefault
  * @type boolean
  * @default false
+ * 
+ * @param LevelMaterials
+ * @text Materials per Level
+ * @type string
+ * @desc Format: niveau:itemIdxqty,itemIdxqty; niveau:itemIdxqty
+ * @default 1:17x1;2:17x2;3:17x3;4:17x5;5:17x8;6:17x12;7:17x16;8:17x20;9:17x25;10:17x30
  */
 
 (() => {
@@ -130,9 +123,6 @@
     .map(s => Number(s.trim()))
     .filter(Number.isFinite);
   const ROUND = String(PP.RoundMode || 'round').toLowerCase();
-  const RATES = (PP.UpgradeRates || '').split(',').map(s => Number(s.trim()));
-  const PITY = (PP.UpgradePity || '').split(',').map(s => Number(s.trim()));
-  const CONSUME_ON_FAIL = String(PP.ConsumeMaterialsOnFail || 'true') === 'true';
   const SCALE_NEG = String(PP.ScaleNegativeParams || 'false') === 'true';
   const SLOT_POINTS = (PP.SlotBreakpoints || '2,4,6,8,10')
     .split(',')
@@ -146,7 +136,36 @@
   const clampLevel = L => Math.max(0, Math.min(MAX_LEVEL, L | 0));
   const roundBy = v =>
     ROUND === 'floor' ? Math.floor(v) : ROUND === 'ceil' ? Math.ceil(v) : Math.round(v);
+  const LEVEL_MATS_RAW = String(PP.LevelMaterials || "");
 
+  function parseLevelMaterials(str) {
+    const map = {};
+
+    str.split(';').forEach(entry => {
+      const [lvlPart, matsPart] = entry.split(':');
+      if (!lvlPart || !matsPart) return;
+
+      const level = Number(lvlPart.trim());
+      if (!Number.isFinite(level)) return;
+
+      const mats = [];
+      matsPart.split(',').forEach(tok => {
+        const m = tok.trim().match(/^(\d+)\s*x\s*(\d+)$/i);
+        if (m) {
+          mats.push({
+            itemId: Number(m[1]),
+            qty: Number(m[2])
+          });
+        }
+      });
+
+      map[level] = mats;
+    });
+
+    return map;
+  }
+
+  const LEVEL_MATS = parseLevelMaterials(LEVEL_MATS_RAW);
   function slotsAtLevel(L) {
     let c = 0;
     for (const t of SLOT_POINTS) if ((L | 0) >= t) c++;
@@ -172,7 +191,6 @@
     if (!k) return;
     _wupgStore()[k] = {
       lvl: w._wupg.lvl | 0,
-      fails: w._wupg.fails | 0,
       slots: Array.isArray(w._wupg.slots) ? JSON.parse(JSON.stringify(w._wupg.slots)) : []
     };
   }
@@ -184,7 +202,6 @@
 
     w._wupg = w._wupg || {};
     w._wupg.lvl = snap.lvl | 0;
-    w._wupg.fails = snap.fails | 0;
     w._wupg.slots = Array.isArray(snap.slots) ? JSON.parse(JSON.stringify(snap.slots)) : [];
   }
 
@@ -285,11 +302,11 @@
       )
       .join(', ');
   }
-  function canPayMats(w) {
-    const mats = nextMatsOf(w);
-    if (!mats.length) return true;
-    return mats.every(m => $gameParty.numItems($dataItems[m.itemId]) >= m.qty);
-  }
+function canPayMats(w) {
+  const mats = nextMatsOf(w);
+  if (!mats.length) return false;
+  return mats.every(m => $gameParty.numItems($dataItems[m.itemId]) >= m.qty);
+}
 
   function payMats(w) {
     nextMatsOf(w).forEach(m => {
@@ -379,8 +396,8 @@
 
   // ---------- Record storage + migration ----------
   function recOfWeaponObj(w) {
-    if (!w) return { lvl: 0, fails: 0, slots: [], gems: [], gemRolls: [] };
-    if (!w._wupg) w._wupg = { lvl: 0, fails: 0, slots: [], gems: [], gemRolls: [] };
+    if (!w) return { lvl: 0, slots: [], gems: [], gemRolls: [] };
+    if (!w._wupg) w._wupg = { lvl: 0, slots: [], gems: [], gemRolls: [] };
     if (!Array.isArray(w._wupg.slots)) w._wupg.slots = [];
 
     // ✅ restore persisted snapshot if external rebuild wiped custom fields
@@ -525,17 +542,7 @@
   function currentLevelOf(w) {
     return recOfWeaponObj(w).lvl | 0;
   }
-  function nextChanceOf(w) {
-    const rec = recOfWeaponObj(w);
-    const L = rec.lvl | 0;
-    const pity = PITY[L] || 0;
-    const guaranteed = pity > 0 && (rec.fails | 0) >= pity;
-    return guaranteed ? 100 : RATES[L] || 0;
-  }
-  function nextPityOf(w) {
-    const L = currentLevelOf(w);
-    return PITY[L] || 0;
-  }
+
   function nextGainOf(w) {
     const L = currentLevelOf(w),
       N = Math.min(MAX_LEVEL, L + 1);
@@ -548,6 +555,7 @@
     }
     return gains;
   }
+
   function nextGainTextOf(w) {
     const g = nextGainOf(w);
     const parts = [];
@@ -558,6 +566,7 @@
     }
     return parts.join(', ');
   }
+
   function beforeAfterFor(w) {
     const rec = recOfWeaponObj(w);
     const cur = rec.lvl | 0;
@@ -574,17 +583,19 @@
     }
     return { before, after, delta, cur, next };
   }
+
   function nextMatsOf(w) {
-  const rec = recOfWeaponObj(w);
-  const nextLevel = (rec.lvl | 0) + 1;
-  const meta = weaponMeta(w);
-  // Cas spécial 9 → 10
-  if (nextLevel === 10 && meta._wupgMatsLevel10) {
-    return meta._wupgMatsLevel10;
+    const rec = recOfWeaponObj(w);
+    const nextLevel = (rec.lvl | 0) + 1;
+
+    // priorité aux paramètres plugin
+    if (LEVEL_MATS[nextLevel]) {
+      return LEVEL_MATS[nextLevel];
+    }
+    // fallback (ancien système si rien défini)
+    return [];
   }
 
-  return matsOf(w);
-}
 function nextMatsTextOf(w) {
   return matsToText(nextMatsOf(w));
 }
@@ -599,32 +610,16 @@ function nextMatsTextOf(w) {
     if (rec.lvl >= MAX_LEVEL) return { ok: false, success: false, msg: 'Max level.' };
     if (!canPayMats(w)) return { ok: false, success: false, msg: 'Not enough materials.' };
 
-    const L = rec.lvl | 0;
-    const pity = PITY[L] || 0;
-    const rate = RATES[L] || 0;
+    // Consomme les matériaux (toujours)
+    payMats(w);
 
-    if (CONSUME_ON_FAIL) payMats(w);
+    // Upgrade garanti
+    rec.lvl = Math.min(MAX_LEVEL, rec.lvl + 1);
 
-    const guaranteed = pity > 0 && (rec.fails | 0) >= pity;
-    const success = guaranteed || Math.random() * 100 < rate;
+    // Persist
+    _wupgStoreRec(w);
 
-    if (success) {
-      if (!CONSUME_ON_FAIL) payMats(w);
-      rec.lvl = Math.min(MAX_LEVEL, rec.lvl + 1);
-      rec.fails = 0;
-
-      // ✅ persist
-      _wupgStoreRec(w);
-
-      return { ok: true, success: true, msg: `Success! +${rec.lvl}` };
-    } else {
-      rec.fails = (rec.fails | 0) + 1;
-
-      // ✅ persist
-      _wupgStoreRec(w);
-
-      return { ok: true, success: false, msg: `Failed (${rec.fails})` };
-    }
+    return { ok: true, success: true, msg: `Success! +${rec.lvl}` };
   }
 
   // ---------- Expose ----------
@@ -641,8 +636,6 @@ function nextMatsTextOf(w) {
     isUpgradeable,
     inventoryUpgradeableWeapons,
     currentLevelOf,
-    nextChanceOf,
-    nextPityOf,
     nextGainOf,
     nextGainTextOf,
     nextMatsOf,

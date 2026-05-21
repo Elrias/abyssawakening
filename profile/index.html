@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<div id="profile">
+
+  <!-- HEADER -->
+  <div id="header">
+    <div class="avatar-wrapper">
+      <img id="avatar">
+      <div class="avatar-overlay">Change Avatar</div>
+      <div class="avatar-loader"></div>
+    </div>
+    <input type="file" id="avatar-input" accept="image/*" style="display:none;">
+    <div>
+      <div class="profile-name">
+        <span id="username"></span>
+        <button class="icon-btn" id="edit-username-btn">✏️</button>
+      </div>
+      <div class="profile-title">
+        <span id="active-title"></span>
+
+        <select id="title-select"></select>
+      </div>
+    </div>
+    <div id="score"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content">
+
+    <!-- LEFT -->
+    <div id="left">
+
+      <div id="main-character"></div>
+
+      <div id="party">
+        <div id="party-members"></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div id="right">
+      <h2>Achievements</h2>
+      <div id="achievements"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>

@@ -715,6 +715,7 @@ BattleManager.startTurn = function () {
     if (!action || !action.item) return false;
     const item = action.item();
     if (!item) return false;
+    if (item.id === 316) return false;
 
     if (DataManager.isSkill(item)) {
       if (item.id === subject.attackSkillId()) return true;

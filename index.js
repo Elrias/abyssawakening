@@ -1,5 +1,5 @@
 // ---------------- Config ----------------
-const API_BASE = "https://abyssawakening-backend.onrender.com"; // <-- TON URL Render
+const API_BASE = "https://abyssawakening-backend.onrender.com";
 const TOKEN_KEY = "cloudsave_token";
 const FLASH_KEY = "flash_message";
 
@@ -11,7 +11,6 @@ const menuLabel = document.getElementById("menuLabel");
 const discordBtn = document.getElementById("discordBtn");
 const backdrop = document.getElementById("backdrop");
 const fsBtn = document.getElementById("fullscreenBtn");
-
 // Auth
 const authForm = document.getElementById("authForm");
 const authTitle = document.getElementById("authTitle");
@@ -22,7 +21,7 @@ const logoutBtn = document.getElementById("authLogoutBtn");
 const toggleModeBtn = document.getElementById("authToggleModeBtn");
 const forgotBtn = document.getElementById("authForgotBtn");
 const authLinksRow = document.getElementById("authLinksRow");
-
+const profileBtn = document.getElementById("profileBtn");
 // éviter submit (Enter)
 authForm?.addEventListener("submit", (e) => e.preventDefault());
 
@@ -235,7 +234,7 @@ function updateAuthUI() {
     if (authLinksRow) authLinksRow.style.display = "none";
     if (submitBtn) submitBtn.style.display = "none";
     if (logoutBtn) logoutBtn.style.display = "inline-flex";
-
+    if (profileBtn) profileBtn.style.display = "inline-flex";
     if (authLoggedMsg) {
       authLoggedMsg.style.display = "block";
       authLoggedMsg.textContent = `You are successfully logged into the account for ${email || "your email"}.`;
@@ -252,11 +251,28 @@ function updateAuthUI() {
   if (authLinksRow) authLinksRow.style.display = "flex";
   if (submitBtn) submitBtn.style.display = "inline-flex";
   if (logoutBtn) logoutBtn.style.display = "none";
+  if (profileBtn) profileBtn.style.display = "none";
 }
 
 toggleModeBtn?.addEventListener("click", () => {
   if (isLoggedIn()) return;
   setMode(mode === "login" ? "register" : "login");
+});
+
+profileBtn?.addEventListener("click", async () => {
+  try {
+    const res = await api("/profile");
+    const username = res.user.username;
+
+    window.open(
+      `/elrias-lab/abyssawakening/profile/`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  } catch (err) {
+    console.error("Failed to fetch profile:", err);
+    alert("Failed to open profile");
+  }
 });
 
 forgotBtn?.addEventListener("click", async () => {

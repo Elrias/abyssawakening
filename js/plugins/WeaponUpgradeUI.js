@@ -395,7 +395,7 @@
     setMessage(m){ this._msg=m||""; this.refresh(); }
     refresh(){
       this.contents.clear(); const w=this._weapon; if(!w) return;
-      const mats=WeaponUpg.nextMatsOf(w), chance=WeaponUpg.nextChanceOf(w); let y=0;
+      const mats=WeaponUpg.nextMatsOf(w); let y=0;
       this.changeTextColor(ColorManager.systemColor()); this.drawText(OPT.txtCost+":",0,y,this.contentsWidth(),"left"); this.resetTextColor(); y+=this.lineHeight();
       if(mats.length===0){ this.drawText("—",0,y,this.contentsWidth(),"left"); y+=this.lineHeight(); }
       else {
@@ -405,8 +405,6 @@
           this.drawText(`${OPT.txtOwned}: ${have}`,leftW,y,this.contentsWidth()-leftW-12,"right"); y+=this.lineHeight();
         }
       }
-      const rightW=120; this.changeTextColor(ColorManager.systemColor()); this.drawText(OPT.txtSuccess+":",0,y,this.contentsWidth()-rightW-10,"left"); this.resetTextColor();
-      const L=WeaponUpg.currentLevelOf(w), M=WeaponUpg.maxLevel(); const cStr=L>=M?"—":`${chance}%`; this.drawText(cStr,this.contentsWidth()-rightW,y,rightW-12,"right"); y+=this.lineHeight();
       if(this._msg){ y+=4; this.changeTextColor(ColorManager.systemColor()); this.drawText(this._msg,0,y,this.contentsWidth(),"left"); this.resetTextColor(); }
     }
   }
@@ -417,7 +415,7 @@
     makeCommandList(){ this.addCommand(OPT.txtEnhance,"enhance",this.isEnhanceEnabled()); this.addCommand(OPT.txtReturn,"cancel",true); }
     isEnhanceEnabled(){
       const w=this._weapon; if(!w) return false; const L=WeaponUpg.currentLevelOf(w), M=WeaponUpg.maxLevel(); if(L>=M) return false;
-      const mats=WeaponUpg.nextMatsOf(w); if(!mats.length) return true; return mats.every(m=> ownedQty(m.itemId)>=m.qty);
+      const mats=WeaponUpg.nextMatsOf(w); if(!mats.length) return false; return mats.every(m=> ownedQty(m.itemId)>=m.qty);
     }
     refresh(){ super.refresh(); if(this.active && this.maxItems()>0) this.select(0); }
   }
