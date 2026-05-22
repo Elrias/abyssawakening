@@ -265,7 +265,7 @@ profileBtn?.addEventListener("click", async () => {
     const username = res.user.username;
 
     window.open(
-      `/elrias-lab/abyssawakening/profile/`,
+      `/profile/`,
       "_blank",
       "noopener,noreferrer"
     );
