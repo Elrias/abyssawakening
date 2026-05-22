@@ -52,8 +52,8 @@
       ? currentIdx + 1
       : Math.max(currentIdx + 1, wantedIdx);
 
-    _addState.call(this, chain[nextIdx]);
-    
     this.removeState(chain[currentIdx]);
+
+    _addState.call(this, chain[nextIdx]);
   };
 })();

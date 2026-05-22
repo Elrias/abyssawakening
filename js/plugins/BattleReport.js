@@ -88,10 +88,6 @@ Game_Action.prototype.apply = function(target) {
             subject._battleStats.healing += Math.abs(value);
         }
     }
-
-    if (target?.isActor() && target._battleStats && value > 0) {
-        target._battleStats.taken += value;
-    }
 };
 
 // ------------------------------------------------------------
@@ -478,6 +474,10 @@ Game_Battler.prototype.removeState = function(stateId) {
 
     if (this._stateSources) {
         delete this._stateSources[stateId];
+    }
+    
+    if (this._dotInitStates) {
+        delete this._dotInitStates[stateId];
     }
 };
 
