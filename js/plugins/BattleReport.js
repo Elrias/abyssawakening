@@ -483,7 +483,7 @@ Game_Battler.prototype.removeState = function(stateId) {
 
 BattleStats.trackDot = function(user, target, value, elementId) {
 
-    console.log("DOT:", value);
+    //console.log("DOT:", value);
 
     if (!user || !user.isActor()) return;
     if (!user._battleStats) return;

@@ -98,7 +98,7 @@ async function putSave(slotId, obj) {
     return result;
   };
 
-  console.log("[CloudUpload] Plugin loaded (StorageManager hook).");
+  //console.log("[CloudUpload] Plugin loaded (StorageManager hook).");
   
   window.addEventListener("beforeunload", function (e) {
     if (pendingUploads > 0) {

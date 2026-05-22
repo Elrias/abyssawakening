@@ -57,7 +57,7 @@
   async function importCloudToLocal() {
     const t = token();
     if (!t || !API) {
-      console.log("[CloudSync] No token or API, skipping.");
+      //console.log("[CloudSync] No token or API, skipping.");
       return;
     }
 
@@ -78,10 +78,10 @@
           // Extraire globalInfo du format exact du jeu (important pour l'UI)
           importedGlobalInfo = extractGlobalInfoObject(globalObj);
 
-          console.log("[CloudSync] Global imported (and extracted globalInfo)");
+          //console.log("[CloudSync] Global imported (and extracted globalInfo)");
         }
       } else {
-        console.log("[CloudSync] No global found in cloud.");
+        //console.log("[CloudSync] No global found in cloud.");
       }
 
       // 2) Import des slots fileX
@@ -93,7 +93,7 @@
         if (!r?.payload) continue;
 
         await StorageManager.saveObject(`file${slot}`, JSON.parse(r.payload));
-        console.log(`[CloudSync] Slot ${slot} imported`);
+        //console.log(`[CloudSync] Slot ${slot} imported`);
       }
     } finally {
       setSyncing(false);
@@ -112,7 +112,7 @@
           // Appliquer le globalInfo cloud à DataManager pour que Continue/Load affichent correctement
           if (importedGlobalInfo) {
             DataManager._globalInfo = importedGlobalInfo;
-            console.log("[CloudSync] DataManager._globalInfo set from cloud global");
+            //console.log("[CloudSync] DataManager._globalInfo set from cloud global");
           } else {
             console.warn("[CloudSync] No globalInfo extracted; UI may not reflect saves correctly.");
           }
@@ -126,5 +126,5 @@
     return _isReady.call(this) && this._cloudSyncDone;
   };
 
-  console.log("[CloudSync] Plugin loaded.");
+  //console.log("[CloudSync] Plugin loaded.");
 })();
