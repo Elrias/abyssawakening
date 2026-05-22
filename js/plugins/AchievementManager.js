@@ -187,7 +187,6 @@
         // INIT
         // =========================
         init() {
-            console.log("AchievementManager initialized");
             this.load();
             this.syncAllUnlocked();
         },
@@ -199,7 +198,6 @@
             const token = localStorage.getItem("cloudsave_token")
 
             if (!token) {
-                console.warn("No token, skip sync");
                 return;
             }
 
@@ -218,10 +216,10 @@
                 return res.json();
             })
             .then(() => {
-                console.log("Achievement synced:", id);
+                //console.log("Achievement synced:", id);
             })
             .catch(err => {
-                console.warn("Sync failed:", id, err);
+                //console.warn("Sync failed:", id, err);
 
                 // fallback queue
                 this.data.pendingSync.push(id);
@@ -375,7 +373,7 @@
         onMining(amount = 1) {
             this.data.oresMined += amount;
 
-            console.log("Ores mined:", this.data.oresMined);
+            //console.log("Ores mined:", this.data.oresMined);
 
             for (const id in this.achievements) {
                 const ach = this.achievements[id];
@@ -393,7 +391,7 @@
         onChestOpen(amount = 1) {
             this.data.chestsOpened += amount;
 
-            console.log("Chests Opened:", this.data.chestsOpened);
+            //console.log("Chests Opened:", this.data.chestsOpened);
 
             for (const id in this.achievements) {
                 const ach = this.achievements[id];
@@ -411,7 +409,7 @@
         onBackupCall(amount = 1) {
             this.data.backupCalls += amount;
 
-            console.log("Backup calls:", this.data.backupCalls);
+            //console.log("Backup calls:", this.data.backupCalls);
 
             for (const id in this.achievements) {
                 const ach = this.achievements[id];
@@ -433,7 +431,7 @@
 
             const count = this.data.recruitedActors.length;
 
-            console.log("Recruited:", count);
+            //console.log("Recruited:", count);
 
             for (const id in this.achievements) {
                 const ach = this.achievements[id];
@@ -459,7 +457,7 @@
         onWeaponUpgrade(weapon, level) {
             const baseId = weapon.originalId || weapon.baseItemId || weapon.id;
 
-            console.log("Weapon upgrade:", baseId, "Level:", level);
+            //console.log("Weapon upgrade:", baseId, "Level:", level);
 
             for (const id in this.achievements) {
                 const ach = this.achievements[id];
@@ -489,7 +487,7 @@
 
             const ach = this.achievements[id];
 
-            console.log("Achievement unlocked:", id);
+            //console.log("Achievement unlocked:", id);
 
             AudioManager.playSe({
                 name: "Chime2",
@@ -526,7 +524,7 @@
             };
 
             this.save();
-            console.log("Achievements reset");
+            //console.log("Achievements reset");
         }
     };
 
@@ -539,7 +537,7 @@
     const _Game_Enemy_die = Game_Enemy.prototype.die;
     Game_Enemy.prototype.die = function () {
         _Game_Enemy_die.call(this);
-        console.log("Enemy killed:", this.enemy().id);
+        //console.log("Enemy killed:", this.enemy().id);
         AchievementManager.onEnemyKilled(this.enemy().id);
     };
 
@@ -547,7 +545,7 @@
     Game_Actor.prototype.levelUp = function() {
         _Game_Actor_levelUp.call(this);
 
-        console.log("Level up:", this.actorId(), "lvl", this.level);
+        //console.log("Level up:", this.actorId(), "lvl", this.level);
 
         AchievementManager.onActorLevelUp(this.actorId(), this.level);
     };
