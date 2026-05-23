@@ -1,92 +1,143 @@
 /*:
  * @target MZ
- * @plugindesc v1.4.1 Applique un état à toute l'équipe quand un acteur "esquive" (evade ou miss selon réglages).
+ * @plugindesc v1.5.0 Applique un état à l'acteur quand il esquive et donne du TP à l'équipe (1 fois par tour).
  * @help
- * Placez ce plugin sous VisuStella. 
- * Réglez les constantes ci-dessous.
+ * Placez ce plugin sous VisuStella.
  */
+
 (() => {
-  // ===== Réglages =====
-  const ACTOR_ID          = 21;     // 0 = n'importe quel acteur ; sinon ID précis
 
-  // Que considérer comme "dodge" ?
-  const TRIGGER_ON_EVADE  = true;  // result().evaded === true
-  const TRIGGER_ON_MISS   = true;  // result().missed === true
+  // ==========================================================================
+  // CONFIG
+  // ==========================================================================
 
-  // Filtre par type d'action
-  const ALLOW_PHYSICAL    = true;
-  const ALLOW_MAGICAL     = true;
-  const ALLOW_CERTAINHIT  = false;
+  const ACTOR_ID = 21; // 0 = n'importe quel acteur
 
-  const ONCE_PER_TURN     = true;
-  const REFRESH_DURATION  = true;
+  // Que considérer comme une esquive ?
+  const TRIGGER_ON_EVADE = true; // evade
+  const TRIGGER_ON_MISS  = true; // miss
 
-  function applyDodgeEffects(b) {
+  // Types d'actions autorisés
+  const ALLOW_PHYSICAL   = true;
+  const ALLOW_MAGICAL    = true;
+  const ALLOW_CERTAINHIT = false;
 
-    if (!b?.isActor?.()) return;
-    if (ACTOR_ID > 0 && b.actorId() !== ACTOR_ID) return;
+  // Limite TP : 1 fois par tour
+  const ONCE_PER_TURN = true;
 
-    b.addState(168);
+  // ==========================================================================
+  // LOGIQUE
+  // ==========================================================================
 
-  if (ONCE_PER_TURN) {
-    const battleId = BattleManager._battleCount || 0;
-    const turn = $gameTroop.turnCount();
+  function applyDodgeEffects(battler) {
 
-    b._dodgeTpData ??= {
-      battleId: -1,
-      turn: -1
-    };
+    // Sécurité
+    if (!battler?.isActor?.()) return;
 
-    const data = b._dodgeTpData;
-
-    if (data.battleId === battleId && data.turn === turn) {
+    // Filtre Actor ID
+    if (ACTOR_ID > 0 && battler.actorId() !== ACTOR_ID) {
       return;
     }
 
-    data.battleId = battleId;
-    data.turn = turn;
-  }
+    // ==========================================================
+    // 1) State 168 à chaque esquive
+    // ==========================================================
 
-    // ==============================
-    // 2️⃣ State 179 → +15 TP à l'équipe
-    // ==============================
-    if (b.isStateAffected(179)) {
-      const allies = b.friendsUnit().aliveMembers();
+    battler.addState(168);
+
+    // ==========================================================
+    // 2) TP : une fois par tour
+    // ==========================================================
+
+    if (ONCE_PER_TURN) {
+
+      const battleId = BattleManager._battleCount || 0;
+      const turn = $gameTroop.turnCount();
+
+      battler._dodgeTpData ??= {
+        battleId: -1,
+        turn: -1
+      };
+
+      const data = battler._dodgeTpData;
+
+      // Déjà déclenché ce tour dans ce combat
+      if (data.battleId === battleId && data.turn === turn) {
+        return;
+      }
+
+      // Sauvegarde
+      data.battleId = battleId;
+      data.turn = turn;
+    }
+
+    // ==========================================================
+    // 3) Si state 179 → +15 TP équipe
+    // ==========================================================
+
+    if (battler.isStateAffected(179)) {
+
+      const allies = battler.friendsUnit().aliveMembers();
+
       for (const member of allies) {
         member.gainTp(15);
       }
     }
   }
 
-  function onDodge(b) {
-    const stamp = Graphics?.frameCount ?? Date.now();
-    if (b._dtsLastStamp === stamp) return;
-    b._dtsLastStamp = stamp;
-    applyDodgeEffects(b);
-  }
+  // ==========================================================================
+  // Dodge Detection
+  // ==========================================================================
+  // IMPORTANT :
+  // On utilise UNIQUEMENT Game_Action.apply
+  // pour éviter les doubles triggers et bugs VisuStella.
+  // ==========================================================================
 
-  const _performEvasion = Game_Battler.prototype.performEvasion;
-  Game_Battler.prototype.performEvasion = function() {
-    _performEvasion.call(this);
-    onDodge(this);
-  };
-  const _performMagicEvasion = Game_Battler.prototype.performMagicEvasion;
-  Game_Battler.prototype.performMagicEvasion = function() {
-    _performMagicEvasion.call(this);
-    onDodge(this);
-  };
+  const _Game_Action_apply = Game_Action.prototype.apply;
 
-  const _apply = Game_Action.prototype.apply;
   Game_Action.prototype.apply = function(target) {
-    _apply.call(this, target);
-    const res = target?.result?.();
-    const wasEvade = !!res?.evaded;
-    const wasMiss  = !!res?.missed;
-    const isPhys = this.isPhysical?.();
-    const isMag  = this.isMagical?.();
-    const isCert = this.isCertainHit?.() ?? this.isCertainHit?.();
-    const typeOk = (isPhys && ALLOW_PHYSICAL) || (isMag && ALLOW_MAGICAL) || (isCert && ALLOW_CERTAINHIT);
-    const flagOk = (TRIGGER_ON_EVADE && wasEvade) || (TRIGGER_ON_MISS && wasMiss);
-    if (target?.isActor?.() && typeOk && flagOk) onDodge(target);
+
+    _Game_Action_apply.call(this, target);
+
+    if (!target?.isActor?.()) return;
+
+    const result = target.result();
+
+    if (!result) return;
+
+    // ==========================================================
+    // Vérification dodge
+    // ==========================================================
+
+    const wasEvaded = !!result.evaded;
+    const wasMissed = !!result.missed;
+
+    const dodgeOk =
+      (TRIGGER_ON_EVADE && wasEvaded) ||
+      (TRIGGER_ON_MISS && wasMissed);
+
+    if (!dodgeOk) return;
+
+    // ==========================================================
+    // Vérification type action
+    // ==========================================================
+
+    const isPhysical = this.isPhysical?.();
+    const isMagical  = this.isMagical?.();
+    const isCertain  = this.isCertainHit?.();
+
+    const typeOk =
+      (isPhysical && ALLOW_PHYSICAL) ||
+      (isMagical && ALLOW_MAGICAL) ||
+      (isCertain && ALLOW_CERTAINHIT);
+
+    if (!typeOk) return;
+
+    // ==========================================================
+    // Application effets
+    // ==========================================================
+
+    applyDodgeEffects(target);
   };
+
 })();
