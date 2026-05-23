@@ -31,59 +31,33 @@
 
   function applyDodgeEffects(battler) {
 
-    // Sécurité
-    if (!battler?.isActor?.()) return;
+  if (!battler?.isActor?.()) return;
 
-    // Filtre Actor ID
-    if (ACTOR_ID > 0 && battler.actorId() !== ACTOR_ID) {
-      return;
-    }
+  if (ACTOR_ID > 0 && battler.actorId() !== ACTOR_ID) {
+    return;
+  }
 
-    // ==========================================================
-    // 1) State 168 à chaque esquive
-    // ==========================================================
+  // State 168 à chaque esquive
+  battler.addState(168);
 
-    battler.addState(168);
+  // Déjà déclenché ce tour ?
+  if (battler.isStateAffected(320)) {
+    return;
+  }
 
-    // ==========================================================
-    // 2) TP : une fois par tour
-    // ==========================================================
+  // Applique le cooldown du tour
+  battler.addState(320);
 
-    if (ONCE_PER_TURN) {
+  // State 179 -> TP équipe
+  if (battler.isStateAffected(179)) {
 
-      const battleId = BattleManager._battleCount || 0;
-      const turn = $gameTroop.turnCount();
+    const allies = battler.friendsUnit().aliveMembers();
 
-      battler._dodgeTpData ??= {
-        battleId: -1,
-        turn: -1
-      };
-
-      const data = battler._dodgeTpData;
-
-      // Déjà déclenché ce tour dans ce combat
-      if (data.battleId === battleId && data.turn === turn) {
-        return;
-      }
-
-      // Sauvegarde
-      data.battleId = battleId;
-      data.turn = turn;
-    }
-
-    // ==========================================================
-    // 3) Si state 179 → +15 TP équipe
-    // ==========================================================
-
-    if (battler.isStateAffected(179)) {
-
-      const allies = battler.friendsUnit().aliveMembers();
-
-      for (const member of allies) {
-        member.gainTp(15);
-      }
+    for (const member of allies) {
+      member.gainTp(15);
     }
   }
+}
 
   // ==========================================================================
   // Dodge Detection
