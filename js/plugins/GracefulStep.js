@@ -28,12 +28,24 @@
 
     b.addState(168);
 
-    if (ONCE_PER_TURN) {
-      b._lastDodgeTurn ??= -9999;
-      const t = $gameTroop.turnCount();
-      if (t === b._lastDodgeTurn) return;
-      b._lastDodgeTurn = t;
+  if (ONCE_PER_TURN) {
+    const battleId = BattleManager._battleCount || 0;
+    const turn = $gameTroop.turnCount();
+
+    b._dodgeTpData ??= {
+      battleId: -1,
+      turn: -1
+    };
+
+    const data = b._dodgeTpData;
+
+    if (data.battleId === battleId && data.turn === turn) {
+      return;
     }
+
+    data.battleId = battleId;
+    data.turn = turn;
+  }
 
     // ==============================
     // 2️⃣ State 179 → +15 TP à l'équipe

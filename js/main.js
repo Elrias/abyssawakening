@@ -147,6 +147,7 @@ class Main {
 
     onEffekseerLoad() {
         this.eraseLoadingSpinner();
+        PIXI.settings.PRECISION_FRAGMENT = PIXI.PRECISION.HIGH;
         SceneManager.run(Scene_Boot);
     }
 
