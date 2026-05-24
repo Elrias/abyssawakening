@@ -394,7 +394,7 @@ BattleManager.startTurn = function () {
     _Game_Battler_useItem.call(this, item);
   };
 
-  const _Game_Battler_paySkillCost = Game_Battler.prototype.paySkillCost;
+  /*const _Game_Battler_paySkillCost = Game_Battler.prototype.paySkillCost;
   Game_Battler.prototype.paySkillCost = function (skill) {
     const st = battlerTriggerState(this);
 
@@ -413,8 +413,42 @@ BattleManager.startTurn = function () {
     }
 
     _Game_Battler_paySkillCost.call(this, skill);
-  };
+  };*/
+  // ==========================================
+  // Negative TP regeneration -> tp_spent
+  // ==========================================
 
+  const _Game_Battler_regenerateTp =
+      Game_Battler.prototype.regenerateTp;
+
+  Game_Battler.prototype.regenerateTp = function() {
+
+      const oldTp = this.tp;
+
+      _Game_Battler_regenerateTp.call(this);
+
+      if (!this.isActor || !this.isActor()) return;
+      if (!$gameParty.inBattle()) return;
+
+      const lost = Math.max(0, oldTp - this.tp);
+
+      if (lost <= 0) return;
+
+      const st = battlerTriggerState(this);
+
+      if (ignoreTriggeredSkillForCounting && st.isTriggerCasting) {
+          return;
+      }
+
+      const triggers = allEquippedTriggersForActor(this);
+
+      for (const t of triggers) {
+          if (t.cond.key === "tp_spent") {
+              incCounter(this, "tp_spent", null, t.skillId, 1);
+          }
+      }
+  };
+  
   // --- Healing received: count every healing tick (regen, lifesteal, direct heals, etc.) ---
   const _Game_Battler_gainHp = Game_Battler.prototype.gainHp;
   Game_Battler.prototype.gainHp = function(value) {
@@ -749,6 +783,11 @@ BattleManager.startTurn = function () {
       }
     }
 
+    // Snapshot TP avant action
+    if (subject) {
+        subject._triggerEquipLastTp = subject.tp;
+    }
+    
     _BattleManager_startAction.call(this);
   };
 
@@ -757,6 +796,34 @@ BattleManager.startTurn = function () {
     const subject = this._subject;
 
     _BattleManager_endAction.call(this);
+
+    // ==========================================
+    // TP spent check
+    // ==========================================
+
+    if (subject && subject.isActor && subject.isActor()) {
+
+        const oldTp = Number(subject._triggerEquipLastTp || 0);
+        const newTp = Number(subject.tp || 0);
+
+        const lost = Math.max(0, oldTp - newTp);
+
+        if (lost > 0) {
+
+            const st = battlerTriggerState(subject);
+
+            if (!(ignoreTriggeredSkillForCounting && st.isTriggerCasting)) {
+
+                const triggers = allEquippedTriggersForActor(subject);
+
+                for (const t of triggers) {
+                    if (t.cond.key === "tp_spent") {
+                        incCounter(subject, "tp_spent", null, t.skillId, 1);
+                    }
+                }
+            }
+        }
+    }
 
     if (!subject || !subject.isActor || !subject.isActor()) return;
 
