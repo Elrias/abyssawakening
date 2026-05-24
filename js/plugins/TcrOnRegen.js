@@ -101,24 +101,27 @@
     };
   }
 
-  // --- Forcer TCR sur la regen TP (traits TRG, etc.) même si un plugin contourne gainSilentTp ---
+  // --- Forcer TCR sur la regen TP (TRG, etc.) ---
   const _regenerateTp2 = Game_Battler.prototype.regenerateTp;
   Game_Battler.prototype.regenerateTp = function() {
     const before = this.tp;
-    const result = _regenerateTp2.call(this);
+
+    // IMPORTANT :
+    // bypass pendant la regen vanilla
+    const result = withTcrTpBypass(this, () => {
+      return _regenerateTp2.call(this);
+    });
+
     const gained = this.tp - before;
 
-    // Si regen positive, on ajoute le supplément TCR
+    // On applique TCR UNE seule fois
     if (gained > 0) {
-      const tcr = (typeof this.tcr === "number") ? this.tcr : 1;
-      const scaled = Math.floor(gained * tcr);
+      const scaled = Math.floor(gained * this.tcr);
       const extra = scaled - gained;
 
       if (extra !== 0) {
-        // bypass pour éviter double scaling si jamais gainTp/gainSilentTp a déjà pris tcr
-        return withTcrTpBypass(this, () => {
+        withTcrTpBypass(this, () => {
           this.gainSilentTp(extra);
-          return result;
         });
       }
     }
