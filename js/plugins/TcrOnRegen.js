@@ -107,13 +107,8 @@
 
   Game_Battler.prototype.regenerateTp = function() {
 
-    const turn = $gameTroop?.turnCount?.() ?? 0;
-
-    if (
-      BLOCK_TURN0_REGEN_ACTORS &&
-      turn === 0 &&
-      this.isActor?.()
-    ) {
+    // Pas de regen avant le vrai début du combat
+    if (!BattleManager._phase || BattleManager._phase === "start") {
       return;
     }
 
