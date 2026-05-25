@@ -778,8 +778,10 @@ BattleManager.startTurn = function () {
       // IMPORTANT:
       // - si c'est un AutoSkillTrigger -> on conserve l'info du dernier "vrai" tour consommé
       // - sinon -> on calcule normalement
-      if (!isAuto) {
-        st._lastActionConsumesTurn = actionConsumesTurn(subject, action);
+      if (isAuto) {
+      st._lastActionConsumesTurn = false;
+      } else {
+          st._lastActionConsumesTurn = actionConsumesTurn(subject, action);
       }
     }
 
