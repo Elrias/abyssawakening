@@ -150,7 +150,7 @@
         // ===== RECRUIT =====
         RECRUIT_1: { type: "recruit", title: "My only friend", description: "Recruit a new party member", trigger: "recruit_count", target: 1, score: 10 },
         RECRUIT_5: { type: "recruit", title: "Strength in numbers", description: "Recruit 5 new party members", trigger: "recruit_count", target: 5, score: 30 },
-        RECRUIT_ALL: { type: "recruit", title: "The place to be", description: "Recruit all characters", trigger: "recruit_count", target: 12, score: 50 },
+        RECRUIT_ALL: { type: "recruit", title: "The place to be", description: "Recruit all characters", trigger: "recruit_all", target: 15, score: 50 },
 
         // ===== WEAPON =====
         WEAPON_EMBER_9: { type: "weapon", title: "Power Spike", description: "Raise an Emberheart weapon to +9", trigger: "weapon_level", target: { weaponIds: [15,21,27,33,39,45,51,57,63,69], level: 9 }, score: 30 },
@@ -190,6 +190,14 @@
             console.log("AchievementManager initialized");
             this.load();
             this.syncAllUnlocked();
+            
+            // TEMP FIX recruit all
+            const recruitedActors = [...new Set($gameParty._actors)];
+            const recruitedCount = recruitedActors.length;
+
+            if (recruitedCount >= 15 && !this.unlocked["RECRUIT_ALL"]) {
+                this.unlock("RECRUIT_ALL");
+            }
         },
 
         // =========================
@@ -447,7 +455,11 @@
 
                 // tous les persos
                 if (ach.trigger === "recruit_all") {
-                    if (count >= $dataActors.length - 1) {
+
+                    const recruitedActors = [...new Set($gameParty._actors)];
+                    const recruitedCount = recruitedActors.length;
+
+                    if (recruitedCount >= ach.target) {
                         this.unlock(id);
                     }
                 }

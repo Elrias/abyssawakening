@@ -72,5 +72,6 @@ var $plugins =
 {"name":"EnemyBreakGauge","status":true,"description":"","parameters":{}},
 {"name":"IndependentWeaponDrops","status":true,"description":"Convert dropped weapons into DM_IndependentItems instances.","parameters":{}},
 {"name":"AchievementManager","status":true,"description":"Achievement Manager","parameters":{}},
-{"name":"BattleReport","status":true,"description":"Battle Statistics Overlay (TAB during Victory Aftermath)","parameters":{}}
+{"name":"BattleReport","status":true,"description":"Battle Statistics Overlay (TAB during Victory Aftermath)","parameters":{}},
+{"name":"TurnCount","status":true,"description":"Simple Battle Turn Counter","parameters":{}}
 ];

@@ -22,10 +22,11 @@ const ELEMENT_COLORS = [
 ];
 
 function formatNumber(n) {
+
     if (n >= 100000) {
-        const value = n / 1000;
-        return (Math.floor(value * 10) / 10) + "k";
+        return Math.floor(n / 1000) + "k";
     }
+
     return Math.floor(n).toString();
 }
 
@@ -103,6 +104,16 @@ BattleManager.endBattle = function(result) {
     const turns = $gameTroop.turnCount();
     const isVictory = result === 0; 
     const enemies = $gameTroop.members().map(enemy => enemy.battlerName());
+    const totalEnemyHp = $gameTroop.members()
+    .reduce((sum, enemy) => sum + Math.max(enemy.hp, 0), 0);
+
+    const totalEnemyMhp = $gameTroop.members()
+        .reduce((sum, enemy) => sum + enemy.mhp, 0);
+
+    const enemyHpPercent =
+        totalEnemyMhp > 0
+            ? Math.floor((totalEnemyHp / totalEnemyMhp) * 100)
+            : 0;
     const troopName = $gameTroop.troop().name;
     const data = [];
     const durationFrames = Graphics.frameCount - BattleManager._battleStartTime;
@@ -130,7 +141,8 @@ BattleManager.endBattle = function(result) {
         victory: isVictory,
         enemies: enemies,
         turns: turns,
-        time: seconds
+        time: seconds,
+        enemyHpPercent: enemyHpPercent
     });
 
     if ($gameSystem._battleHistory.length > 5) {
@@ -364,22 +376,32 @@ Window_BattleReport.prototype.drawDamageBar = function(actor, x, y, max){
     this.contents.fillRect(x, y, BAR_WIDTH, BAR_HEIGHT, "#2a2a2a");
 
     let startX = x;
+    let total = 0;
 
     for (const elementId in actor.stats.damageByElement) {
 
         const value = actor.stats.damageByElement[elementId];
         if (value <= 0) continue;
 
+        total += value;
+
         const w = BAR_WIDTH * value / max;
         const color = ELEMENT_COLORS[elementId % ELEMENT_COLORS.length];
 
-        // petite marge verticale (effet flottant)
+        // segment coloré
         this.contents.fillRect(startX, y + 2, w, BAR_HEIGHT - 4, color);
-
-        this.drawText(formatNumber(value), startX, y - 13, w, "center");
 
         startX += w;
     }
+
+    // TOTAL centré
+    this.drawText(
+        formatNumber(total),
+        x,
+        y - 13,
+        BAR_WIDTH,
+        "center"
+    );
 };
 
 Window_BattleReport.prototype.drawTakenBar = function(actor,x,y,max){
@@ -609,9 +631,9 @@ Window_BattleLogList.prototype.itemHeight = function() {
 Window_BattleReport.prototype.drawBattleInfo = function() {
 
     const x = this.contentsWidth() - 220;
-    let y = 200; // juste sous la légende
+    let y = 200;
 
-    const battle = this._battleMeta; // on va l’ajouter juste après
+    const battle = this._battleMeta;
 
     if (!battle) return;
 
@@ -633,6 +655,19 @@ Window_BattleReport.prototype.drawBattleInfo = function() {
 
     this.resetTextColor();
     this.drawText(timeText, x + 80, y + 30, 100, "right");
+
+    this.changeTextColor("#aaaaaa");
+    this.drawText("Enemy HP :", x, y + 60, 100);
+
+    this.resetTextColor();
+
+    this.drawText(
+        battle.enemyHpPercent + "%",
+        x + 80,
+        y + 60,
+        100,
+        "right"
+    );
 };
 
 Game_Battler.prototype.stateSourceActor = function(stateId) {

@@ -341,6 +341,7 @@ BattleManager.startTurn = function () {
     resetTurnLocal(a);
     const st = battlerTriggerState(a);
     st.hasStartedRealTurn = true;   
+    st._lastActionConsumesTurn = false;
   });
 
   $gameTroop.members().forEach((e) => {
@@ -778,9 +779,7 @@ BattleManager.startTurn = function () {
       // IMPORTANT:
       // - si c'est un AutoSkillTrigger -> on conserve l'info du dernier "vrai" tour consommé
       // - sinon -> on calcule normalement
-      if (isAuto) {
-      st._lastActionConsumesTurn = false;
-      } else {
+      if (!isAuto) {
           st._lastActionConsumesTurn = actionConsumesTurn(subject, action);
       }
     }
