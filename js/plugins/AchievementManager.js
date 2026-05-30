@@ -99,6 +99,9 @@
         DEFEAT_CRIMSON_DRAGON: { type: "side", title: "Playing with fire", description: "Defeat Crimson Dragon", trigger: "boss_kill", target: 42, score: 20 },
         DEFEAT_IFRIT: { type: "side", title: "Ashes to ashes", description: "Defeat Ifrit", trigger: "boss_kill", target: 43, score: 20 },
         DEFEAT_EMBERHEART: { type: "side", title: "The last ember", description: "Defeat Emberheart Dragon", trigger: "boss_kill", target: 44, score: 25 },
+        DEFEAT_ADAM: { type: "side", title: "Odd Fellow", description: "Defeat Adam", trigger: "boss_kill", target: 86, score: 50 },
+        DEFEAT_ADAMHL: { type: "side", title: "Peak", description: "Defeat Adam (Hard)", trigger: "boss_kill", target: 87, score: 100 },
+
 
         // ===== BATTLE =====
         KILL_100: { type: "battle", title: "Bloodbath", description: "Defeat 100 enemies", trigger: "enemy_kill_count", target: 100, score: 15 },
@@ -129,8 +132,8 @@
 
         // ===== PLAYTIME =====
         PLAYTIME_600: { type: "playtime", title: "Hooked", description: "Play for a total of 600 minutes", trigger: "playtime", target: 600 * 60, score: 20 },
-        PLAYTIME_3000: { type: "playtime", title: "In too deep", description: "Play for a total of 3000 minutes", trigger: "playtime", target: 3000 * 60, score: 40 },
-        PLAYTIME_6000: { type: "playtime", title: "No way out", description: "Play for a total of 6000 minutes", trigger: "playtime", target: 6000 * 60, score: 60 },
+        PLAYTIME_3000: { type: "playtime", title: "In too deep", description: "Play for a total of 1200 minutes", trigger: "playtime", target: 1200 * 60, score: 40 },
+        PLAYTIME_6000: { type: "playtime", title: "No way out", description: "Play for a total of 3000 minutes", trigger: "playtime", target: 3000 * 60, score: 60 },
 
         // ===== SPEEDRUN =====
         SPEED_THUNDERWING: { type: "speedrun", title: "Lightning fast", description: "Defeat Thunderwing Drake in under 120 minutes of play time", trigger: "boss_kill_time", target: { enemyId: 34, maxTime: 120 * 60 }, score: 60 },

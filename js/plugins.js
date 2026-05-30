@@ -73,5 +73,6 @@ var $plugins =
 {"name":"IndependentWeaponDrops","status":true,"description":"Convert dropped weapons into DM_IndependentItems instances.","parameters":{}},
 {"name":"AchievementManager","status":true,"description":"Achievement Manager","parameters":{}},
 {"name":"BattleReport","status":true,"description":"Battle Statistics Overlay (TAB during Victory Aftermath)","parameters":{}},
-{"name":"TurnCount","status":true,"description":"Simple Battle Turn Counter","parameters":{}}
+{"name":"TurnCount","status":true,"description":"Simple Battle Turn Counter","parameters":{}},
+{"name":"lukDebuffRemove","status":true,"description":"Désactive l'influence de la LUK sur les états et debuffs.","parameters":{}}
 ];

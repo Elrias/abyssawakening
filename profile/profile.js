@@ -39,6 +39,9 @@ const ACHIEVEMENT_CONFIG = {
   DEFEAT_CRIMSON_DRAGON: { icon: "sq", rarity: "bronze" },
   DEFEAT_IFRIT: { icon: "sq", rarity: "bronze" },
   DEFEAT_EMBERHEART: { icon: "sq", rarity: "silver" },
+  DEFEAT_ADAM: { icon: "sq", rarity: "gold" },
+  DEFEAT_ADAMHL: { icon: "sq", rarity: "gold" },
+
   KILL_100: { icon: "battle", rarity: "bronze" },
   KILL_500: { icon: "battle", rarity: "silver" },
   KILL_1000: { icon: "battle", rarity: "gold" },
@@ -99,6 +102,7 @@ const TITLE_RULES = [
   { title: "The Green Devil", achievements: ["DEFEAT_CORRUPTED_ALRIC"] },
   { title: "Treasure Hunter", achievements: ["CHESTS_200"] },
   { title: "Honest Worker", achievements: ["MINING_200"] },
+  { title: "The Unyielding Tempest", achievements: ["DEFEAT_ADAMHL"] },
   { title: "The Absolute", achievements: ["WEAPON_EMBER_10", "RECRUIT_ALL", "BACKUP_500", "SPEED_THUNDERWING", "SPEED_LEVIATHAN", "SPEED_EMBERHEART", "BURST_THUNDERWING", "BURST_LEVIATHAN", "BURST_EMBERHEART", "PLAYTIME_6000", "GOLD_500000", "KILL_1000", "DEFEAT_CORRUPTED_ALRIC", "DEFEAT_EMBERHEART", "MINING_200", "CHESTS_200", "HIRO_50", "DAN_50", "ERIKA_50", "JASMINE_50", "THYME_50", "SHELON_50", "EMI_50", "REYAN_50", "LESLIE_50", "KAI_50", "VALERYA_50", "CLAW_50", "VALENTINE_50", "GALAD_50", "LEO_50", ] },
 ];
 

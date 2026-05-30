@@ -68,16 +68,16 @@
     { STATE_ID: 68, BONUS_PER_TURN: 0, MAX_BONUS: 1.00, PARAM_ID: 5, TYPE: "hp_low" },
 
     // --- Avenger I~V : ATK/MAT selon PV manquants ---
-    { STATE_ID: 69, BONUS_PER_TURN: 0, MAX_BONUS: 0.30, PARAM_ID: 2, TYPE: "hp_low" },
-    { STATE_ID: 69, BONUS_PER_TURN: 0, MAX_BONUS: 0.30, PARAM_ID: 4, TYPE: "hp_low" },
-    { STATE_ID: 70, BONUS_PER_TURN: 0, MAX_BONUS: 0.35, PARAM_ID: 2, TYPE: "hp_low" },
-    { STATE_ID: 70, BONUS_PER_TURN: 0, MAX_BONUS: 0.35, PARAM_ID: 4, TYPE: "hp_low" },
-    { STATE_ID: 71, BONUS_PER_TURN: 0, MAX_BONUS: 0.40, PARAM_ID: 2, TYPE: "hp_low" },
-    { STATE_ID: 71, BONUS_PER_TURN: 0, MAX_BONUS: 0.40, PARAM_ID: 4, TYPE: "hp_low" },
-    { STATE_ID: 72, BONUS_PER_TURN: 0, MAX_BONUS: 0.45, PARAM_ID: 2, TYPE: "hp_low" },
-    { STATE_ID: 72, BONUS_PER_TURN: 0, MAX_BONUS: 0.45, PARAM_ID: 4, TYPE: "hp_low" },
-    { STATE_ID: 73, BONUS_PER_TURN: 0, MAX_BONUS: 0.50, PARAM_ID: 2, TYPE: "hp_low" },
-    { STATE_ID: 73, BONUS_PER_TURN: 0, MAX_BONUS: 0.50, PARAM_ID: 4, TYPE: "hp_low" },
+    { STATE_ID: 69, BONUS_PER_TURN: 0, MAX_BONUS: 0.35, PARAM_ID: 2, TYPE: "hp_low" },
+    { STATE_ID: 69, BONUS_PER_TURN: 0, MAX_BONUS: 0.35, PARAM_ID: 4, TYPE: "hp_low" },
+    { STATE_ID: 70, BONUS_PER_TURN: 0, MAX_BONUS: 0.45, PARAM_ID: 2, TYPE: "hp_low" },
+    { STATE_ID: 70, BONUS_PER_TURN: 0, MAX_BONUS: 0.45, PARAM_ID: 4, TYPE: "hp_low" },
+    { STATE_ID: 71, BONUS_PER_TURN: 0, MAX_BONUS: 0.55, PARAM_ID: 2, TYPE: "hp_low" },
+    { STATE_ID: 71, BONUS_PER_TURN: 0, MAX_BONUS: 0.55, PARAM_ID: 4, TYPE: "hp_low" },
+    { STATE_ID: 72, BONUS_PER_TURN: 0, MAX_BONUS: 0.65, PARAM_ID: 2, TYPE: "hp_low" },
+    { STATE_ID: 72, BONUS_PER_TURN: 0, MAX_BONUS: 0.65, PARAM_ID: 4, TYPE: "hp_low" },
+    { STATE_ID: 73, BONUS_PER_TURN: 0, MAX_BONUS: 0.75, PARAM_ID: 2, TYPE: "hp_low" },
+    { STATE_ID: 73, BONUS_PER_TURN: 0, MAX_BONUS: 0.75, PARAM_ID: 4, TYPE: "hp_low" },
 
     // --- Boaster I~V : ATK/MAT selon PV élevés ---
     { STATE_ID: 74, BONUS_PER_TURN: 0, MAX_BONUS: 0.25, PARAM_ID: 2, TYPE: "hp_high" },
