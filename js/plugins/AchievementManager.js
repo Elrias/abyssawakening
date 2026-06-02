@@ -192,7 +192,7 @@
         init() {
             console.log("AchievementManager initialized");
             this.load();
-            this.syncAllUnlocked();
+            this.retryPendingSync();
             
             // TEMP FIX recruit all
             const recruitedActors = [...new Set($gameParty._actors)];

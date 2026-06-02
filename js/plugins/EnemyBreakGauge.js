@@ -13,6 +13,8 @@ class Sprite_EnemyBreakGauge extends Sprite {
         this._icon = new Sprite();
         this._icon.bitmap = ImageManager.loadSystem("IconSet");
 
+        this._icon.setFrame(0, 0, 0, 0);
+
         this._icon.scale.x = 0.75;
         this._icon.scale.y = 0.75;
 
@@ -44,7 +46,7 @@ class Sprite_EnemyBreakGauge extends Sprite {
 
         const state = $dataStates[gauge.stateId];
 
-        if (state) {
+        if (state && state.iconIndex > 0) {
 
             const iconIndex = state.iconIndex;
 
@@ -55,6 +57,8 @@ class Sprite_EnemyBreakGauge extends Sprite {
             const sy = Math.floor(iconIndex / 16) * ph;
 
             this._icon.setFrame(sx, sy, pw, ph);
+        } else {
+            this._icon.setFrame(0, 0, 0, 0);
         }
 
         const max = Math.max(1, gauge.max);
