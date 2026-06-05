@@ -11,6 +11,7 @@ const menuLabel = document.getElementById("menuLabel");
 const discordBtn = document.getElementById("discordBtn");
 const backdrop = document.getElementById("backdrop");
 const fsBtn = document.getElementById("fullscreenBtn");
+window.__menuOpen = false;
 // Auth
 const authForm = document.getElementById("authForm");
 const authTitle = document.getElementById("authTitle");
@@ -22,6 +23,106 @@ const toggleModeBtn = document.getElementById("authToggleModeBtn");
 const forgotBtn = document.getElementById("authForgotBtn");
 const authLinksRow = document.getElementById("authLinksRow");
 const profileBtn = document.getElementById("profileBtn");
+
+document.addEventListener(
+  "keydown",
+  function(e) {
+    if (!window.__menuOpen) return;
+
+    const tag = e.target.tagName;
+
+    const isFormField =
+      tag === "INPUT" ||
+      tag === "TEXTAREA" ||
+      tag === "SELECT" ||
+      e.target.isContentEditable;
+
+    // Laisser fonctionner normalement les champs de formulaire
+    if (isFormField) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return;
+    }
+
+    // Laisser TAB naviguer
+    if (e.key === "Tab") {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return;
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  },
+  true
+);
+
+document.addEventListener(
+  "keyup",
+  function(e) {
+    if (!window.__menuOpen) return;
+
+    const tag = e.target.tagName;
+
+    const isFormField =
+      tag === "INPUT" ||
+      tag === "TEXTAREA" ||
+      tag === "SELECT" ||
+      e.target.isContentEditable;
+
+    if (isFormField) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return;
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  },
+  true
+);
+
+document.addEventListener(
+  "mousedown",
+  function(e) {
+    if (!window.__menuOpen) return;
+    if (!panel?.contains(e.target)) return;
+
+    const tag = e.target.tagName;
+
+    const isFormField =
+      tag === "INPUT" ||
+      tag === "TEXTAREA" ||
+      tag === "SELECT" ||
+      e.target.isContentEditable;
+
+    if (isFormField) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return;
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  },
+  true
+);
+
+document.addEventListener(
+  "mouseup",
+  function(e) {
+    if (!window.__menuOpen) return;
+    if (!panel?.contains(e.target)) return;
+
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  },
+  true
+);
+
 // éviter submit (Enter)
 authForm?.addEventListener("submit", (e) => e.preventDefault());
 
@@ -50,11 +151,23 @@ function setToggleState(isOpen) {
 function closeMenu() {
   panel?.classList.remove("open");
   document.body.classList.remove("menu-open");
+
+  window.__menuOpen = false;
+
+  if (window.Input) Input.clear();
+  if (window.TouchInput) TouchInput.clear();
+
   setToggleState(false);
 }
 function openMenu() {
   panel?.classList.add("open");
   document.body.classList.add("menu-open");
+
+  window.__menuOpen = true;
+
+  if (window.Input) Input.clear();
+  if (window.TouchInput) TouchInput.clear();
+
   setToggleState(true);
 }
 toggle?.addEventListener("click", () => {
