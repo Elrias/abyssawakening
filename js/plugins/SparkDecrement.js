@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Décrémente une chaîne d'états quand la cible est touchée par un Skill Type donné (ex: 2).
- * @author you
+ * @author Elrias
  * @help
  * - SKILL_TYPE_IDS : liste des stypeId qui déclenchent la décrémentation (par défaut [2]).
  * - ONCE_PER_ACTION : si true, décrémente au maximum UNE fois par action et par cible,

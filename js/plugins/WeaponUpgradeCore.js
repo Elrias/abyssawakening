@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc [v2.8.2] Weapon Upgrade Core + Gem backend (fixe & aléatoire). Stocke sur l'objet arme. API WeaponUpg.* pour l'UI. (Hotfix: rétablit les APIs d'upgrade v2.x)
- * @author You
+ * @author Elrias
  *
  * @help
  * ────────────────────────────────────────────────────────────────────────────

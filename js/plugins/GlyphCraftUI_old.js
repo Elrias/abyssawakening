@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Glyph Craft UI (Pro v4) - Bigger multi-line Preview + weight + skill description, lists smaller (scroll), crafts DM_IndependentItems armor, exits on success.
- * @author You
+ * @author Elrias
  *
  * @param TemplateArmorId
  * @type number

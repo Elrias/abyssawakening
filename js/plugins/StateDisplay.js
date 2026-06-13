@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc (VisuStella HUD compatible) Affiche toutes les icônes d'états/buffs en 2 colonnes (5 lignes) sur les panels acteurs. Désactive l'icône alternée. Compatible StateTooltips.
- * @author You
+ * @author Elrias
  *
  * @param rows
  * @text Rows

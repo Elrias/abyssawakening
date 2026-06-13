@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Underwater rules (Breath via states 239-249, Agitation 255) - Activation via Plugin Command - Breath + immediately on heal (max +1 per turn, includes lifesteal/regen via gainHp) + Drown DoT once per turn + stype count via startAction (VisuStella-safe)
- * @author You
+ * @author Elrias
  *
  * @param stypeId1
  * @text Skill Type ID: Type 1

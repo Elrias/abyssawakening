@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Trigger Equip Skills (v2) - Notetags + Dynamic triggers for DM_IndependentItems. Proc at end of battler turn. Battle-counters reset end battle.
- * @author You
+ * @author Elrias
  *
  * @param IgnoreTriggeredSkillForCounting
  * @text Ignorer la compétence déclenchée dans le comptage

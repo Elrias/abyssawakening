@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Show weapon upgrade level in the name (e.g. "Short Sword +3") without mutating database names.
- * @author You
+ * @author Elrias
  *
  * @param ShowWhenZero
  * @text Show +0

@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc [v1.4.1] Weapon Upgrade UI — Inventory-first + compact panel (offset, toast, custom SE, Gem Slots row)
- * @author You
+ * @author Elrias
  *
  * @help
  * Open via plugin command “Open Enhance (from Inventory)”.

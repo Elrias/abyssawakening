@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Chaînes d'états empilables (upgrade, refresh au cap) compatibles VisuStella
- * @author you
+ * @author Elrias
  * @help
  * - Déclarez vos chaînes dans STATE_CHAINS.
  * - STEP_ONLY = true : +1 par application (comportement actuel).

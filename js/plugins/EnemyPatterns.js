@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc IA ennemie : max rating (égalité→aléa) + re-sélection si TP insuffisant (sans rating 9).
- * @author you
+ * @author Elrias
  */
 (() => {
   const DEBUG = false;

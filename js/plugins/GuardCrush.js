@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Guard Crush: ignore guard reduction + apply state + animation + popup text. v1.3
- * @author You
+ * @author Elrias
  *
  * @help
  * Notetag on skills/items:

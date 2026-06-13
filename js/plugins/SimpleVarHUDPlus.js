@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc FR: HUD texte multi-variables, multi-instances, positions presets, commandes dynamiques. v1.0
- * @author ChatGPT
+ * @author Elrias
  *
  * @help
  * Crée un ou plusieurs HUD(s) texte sur la map, chacun lié à une variable RPG Maker MZ.

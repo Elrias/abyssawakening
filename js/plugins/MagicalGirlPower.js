@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc [v1.1] Si l'état @STATE_ID est présent, ajoute à la MAT un flat = BONUS_RATE × ATK (configurable).
- * @author You
+ * @author Elrias
  * @help
  * Compatible VisuStella, ParamRateModesNotetags, DynamicPassiveStates.
  * Le bonus est un **flat** (paramPlus) ajouté à MAT; il ne change pas les % (paramRate).

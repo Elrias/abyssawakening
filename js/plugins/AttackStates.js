@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Fix Attack States: 1 tentative par état (dédoublonnage) + cap à 100%
- * @author You
+ * @author Elrias
  * @help
  * - Addition des sources conservée (attackStatesRate).
  * - La liste attackStates() est dédoublonnée => une seule tentative par stateId.

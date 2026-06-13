@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Fix runtime des Independent Items (normalisation type save/load)
- * @author You
+ * @author Elrias
  */
 
 (() => {

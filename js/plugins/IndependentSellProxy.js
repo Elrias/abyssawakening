@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc [Compat] VisuStella More Currencies: make Shop Sell list treat independent equips as their base item (originalId) for UI + payout, while removing the real instance.
- * @author You
+ * @author Elrias
  *
  * @help
  * Put this plugin BELOW:

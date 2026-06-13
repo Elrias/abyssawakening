@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Battle Turn Counter DEBUG
- * @author ChatGPT
+ * @author Elrias
  */
 
 (() => {

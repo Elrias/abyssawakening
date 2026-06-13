@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Cap TP des ennemis via <TPSphereCount:X> (X orbes => max TP = X*10)
- * @author you
+ * @author Elrias
  * @help
  * - Dans la fiche ENNEMI: <TPSphereCount: 6>  // max TP = 60
  * - Place ce plugin après vos plugins combat (VisuStella, etc.).

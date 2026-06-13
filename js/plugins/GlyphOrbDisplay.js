@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Trigger Equip Orbs Display - show orb progress above actor (uses img/system/SphereFrame.png)
- * @author You
+ * @author Elrias
  *
  * @param OrbFrameImage
  * @type string

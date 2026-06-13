@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Loadouts System V1
- * @author ChatGPT
+ * @author Elrias
  */
 
 (() => {

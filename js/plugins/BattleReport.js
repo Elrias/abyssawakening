@@ -1,7 +1,7 @@
 /*:
 * @target MZ
 * @plugindesc Battle Log (history + report scene)
-* @author ChatGPT
+* @author Elrias
 */
 
 (() => {

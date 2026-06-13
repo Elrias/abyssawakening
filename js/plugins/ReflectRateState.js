@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Reflect a portion of received HP damage back to the attacker via a state notetag <ReflectRate: X> (e.g., 0.10 or 10%). 
- * @author You
+ * @author Elrias
  * @help
  * Put <ReflectRate: 0.10> or <ReflectRate: 10%> in a State's note.
  * When a battler with that State takes HP damage, the attacker takes back X of that damage.

@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Remplace la formule d'expérience par une version personnalisée.
- * @author Toi
+ * @author Elrias
  * 
  * @help
  * Ce plugin surcharge la méthode expForLevel pour appliquer une formule
@@ -11,7 +11,7 @@
 /*:
  * @target MZ
  * @plugindesc Remplace la formule d'expérience par une version fixe par tranche de niveau personnalisée.
- * @author Toi
+ * @author Elrias
  *
  * @help
  * Cette version applique une formule d'EXP par tranche :

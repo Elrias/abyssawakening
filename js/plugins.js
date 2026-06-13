@@ -75,5 +75,6 @@ var $plugins =
 {"name":"BattleReport","status":true,"description":"Battle Statistics Overlay (TAB during Victory Aftermath)","parameters":{}},
 {"name":"TurnCount","status":true,"description":"Simple Battle Turn Counter","parameters":{}},
 {"name":"lukDebuffRemove","status":true,"description":"Désactive l'influence de la LUK sur les états et debuffs.","parameters":{}},
-{"name":"Loadouts","status":true,"description":"Loadouts System V1","parameters":{}}
+{"name":"Loadouts","status":true,"description":"Loadouts System V1","parameters":{}},
+{"name":"AutoBattleCore","status":true,"description":"Auto Battle Core v1.0","parameters":{}}
 ];

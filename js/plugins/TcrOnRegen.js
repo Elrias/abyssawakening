@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Applique TCR à tous les gains de TP (regen, skills, items, etc.) sans double application.
- * @author You
+ * @author Elrias
  *
  * @help
  * - Applique TCR aux gains TP :

@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Plugin pour ajouter des effets de respiration, flottement et redimensionnement des ennemis en vue de côté dans RPG Maker MZ.
- * @author VotreNom
+ * @author Elrias
  *
  * @help
  * Ce plugin permet d'animer les ennemis avec des effets de respiration, flottement, et redimensionnement en vue de côté.

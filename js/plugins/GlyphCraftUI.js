@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Glyph Craft UI (Pro v6) - Single vertical menu (A/B/C + Confirm + Cancel) + popup list. Keyboard-friendly. Crafts DM_IndependentItems armor, exits on success.
- * @author You
+ * @author Elrias
  *
  * @param TemplateArmorId
  * @type number

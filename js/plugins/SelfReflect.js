@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc Adds a self-damage reflection effect via <SelfReflectRate:x%> notetag on states. Only active if user's HP > 25%.
- * @author ChatGPT
+ * @author Elrias
  *
  * @help
  * ===========================================================================

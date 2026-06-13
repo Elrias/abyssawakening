@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc [v1.2] DynamicPassiveStates — États passifs dynamiques (PV manquants, PV élevés, tours) + fix preview (stacks via Passive State)
- * @author You
+ * @author Elrias
  *
  * @help
  * - Applique des bonus dynamiques de Param Rate (TRAIT_PARAM) selon PV / tours.

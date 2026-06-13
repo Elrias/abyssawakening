@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc v2.6-skin — Gem socketing UI (inventory-only). Même apparence que ta v2.6. Utilise WeaponUpg.* (Core) pour insérer et afficher les totaux.
- * @author You
+ * @author Elrias
  *
  * @command OpenGemUI
  * @text Open Gem UI

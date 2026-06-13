@@ -1,7 +1,7 @@
 /*:
  * @target MZ
  * @plugindesc [v1.0] Param Rates additifs/multiplicatifs au choix via notetags (par objet et par paramètre)
- * @author You
+ * @author Elrias
  *
  * @help
  * Placez ce plugin APRÈS les plugins VisuStella MZ pour qu'il prenne la main.
